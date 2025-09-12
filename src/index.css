@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --primary: #3bff6e; /* royal green */
+  --bg: #0f0f0f;      /* dark mode background */
+  --text: #e6e6e6;    /* light text */
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+}
