@@ -9,7 +9,7 @@ const About: React.FC = () => {
         Include links to GitHub, LinkedIn, Discord, Instagram, Medium, Devpost, etc.
       </p>
       <a
-        href="/Pranjwal_Singh_CV__Sep_2025 -xoxo.pdf"
+        href="/Pranjwal_Singh_CV___Sep_2025 -xoxo.pdf"
         download
         className="bg-green-400 text-black px-4 py-2 rounded hover:bg-green-500 transition inline-block"
       >
