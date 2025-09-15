@@ -8,9 +8,13 @@ const About: React.FC = () => {
         Long-form blurb about yourself. Mention your skills, projects, interests, and personality.
         Include links to GitHub, LinkedIn, Discord, Instagram, Medium, Devpost, etc.
       </p>
-      <button className="bg-green-400 text-black px-4 py-2 rounded hover:bg-green-500 transition">
+      <a
+        href="/Pranjwal_CV.pdf"
+        download
+        className="bg-green-400 text-black px-4 py-2 rounded hover:bg-green-500 transition inline-block"
+      >
         Download CV
-      </button>
+      </a>
     </section>
   );
 };
