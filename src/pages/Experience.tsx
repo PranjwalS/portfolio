@@ -8,7 +8,7 @@ const experiences = [
     location: "Rheinmetall, St-Jean, QC",
     duration: "June 2025 – Aug. 2025",
     bullets: [
-      "Built Power Apps for dashboards, audit tracking, and asset management integrating Dataverse + SQL.",
+      "- Built Power Apps for dashboards, audit tracking, and asset management integrating Dataverse + SQL.",
       "Contributed to Vue.js app used by 1000+ staff; created pages and real-time notifications with SignalR.",
       "Worked on .NET backend APIs for notifications and asset tracking.",
       "Participated in Agile Scrum/Kanban across a 55+ member nationwide team.",
