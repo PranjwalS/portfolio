@@ -13,6 +13,7 @@
     --color-green-700: oklch(52.7% 0.154 150.069);
     --color-green-800: oklch(44.8% 0.119 151.328);
     --color-green-900: oklch(39.3% 0.095 152.535);
+    --color-blue-500: oklch(62.3% 0.214 259.815);
     --color-gray-300: oklch(87.2% 0.01 258.338);
     --color-gray-400: oklch(70.7% 0.022 261.325);
     --color-gray-500: oklch(55.1% 0.027 264.364);
@@ -244,9 +245,6 @@
   .grid {
     display: grid;
   }
-  .inline-block {
-    display: inline-block;
-  }
   .table {
     display: table;
   }
@@ -277,14 +275,8 @@
   .w-full {
     width: 100%;
   }
-  .max-w-3xl {
-    max-width: var(--container-3xl);
-  }
   .max-w-4xl {
     max-width: var(--container-4xl);
-  }
-  .max-w-\[1200px\] {
-    max-width: 1200px;
   }
   .max-w-xl {
     max-width: var(--container-xl);
@@ -315,9 +307,6 @@
   }
   .grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-  .grid-rows-\[auto_1fr_auto\] {
-    grid-template-rows: auto 1fr auto;
   }
   .flex-col {
     flex-direction: column;
@@ -457,9 +446,6 @@
   .bg-gray-900 {
     background-color: var(--color-gray-900);
   }
-  .bg-green-400 {
-    background-color: var(--color-green-400);
-  }
   .bg-green-600 {
     background-color: var(--color-green-600);
   }
@@ -519,6 +505,15 @@
   }
   .p-8 {
     padding: calc(var(--spacing) * 8);
+  }
+  .p-10 {
+    padding: calc(var(--spacing) * 10);
+  }
+  .p-20 {
+    padding: calc(var(--spacing) * 20);
+  }
+  .p-200 {
+    padding: calc(var(--spacing) * 200);
   }
   .px-2 {
     padding-inline: calc(var(--spacing) * 2);
@@ -595,9 +590,6 @@
   .font-semibold {
     --tw-font-weight: var(--font-weight-semibold);
     font-weight: var(--font-weight-semibold);
-  }
-  .text-black {
-    color: var(--color-black);
   }
   .text-gray-300 {
     color: var(--color-gray-300);
@@ -693,6 +685,13 @@
     &:hover {
       @media (hover: hover) {
         rotate: 3deg;
+      }
+    }
+  }
+  .hover\:bg-blue-500 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-blue-500);
       }
     }
   }
