@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "../components/about/Button";
 
 const Library: React.FC = () => {
   const blogs = [
@@ -22,6 +23,7 @@ const Library: React.FC = () => {
       <button className="mt-6 bg-gray-700 text-gray-500 px-4 py-2 rounded cursor-not-allowed opacity-70">
         Enter the Pixel Library
       </button>
+      <Button text="<- go back"/>
     </section>
   );
 };

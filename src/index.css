@@ -2,15 +2,36 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+@font-face {
+  font-family: 'Open Sauce Sans';
+  src: url('/fonts/OpenSauceSans-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  
+  font-family: 'Open Sauce Sans';
+  src: url('/fonts/OpenSauceSans-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
 
 :root {
   --primary: #3bff6e; /* royal green */
-  --bg: #0f0f0f;      /* dark mode background */
+  --bg: #000000;      /* dark mode background */
   --text: #e6e6e6;    /* light text */
 }
 
+/* Global font */
 body {
   background-color: var(--bg);
   color: var(--text);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Open Sauce Sans', sans-serif;
+  font-weight: 500;
 }
+
+

@@ -17,4 +17,4 @@ const Box: React.FC<RectangleProps> = ({
     )
 }
 
-export default Box;
+export default Box

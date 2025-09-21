@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import Button from "../components/about/Button";
 
 const experiences = [
   {
@@ -72,6 +73,7 @@ const Experience: React.FC = () => {
       <div>
         <h2 className="text-3xl text-green-400 font-bold mb-6">Experience</h2>
         <div className="space-y-8">
+          <Button text= "<- go back"/>
           {experiences.map((exp, i) => (
             <motion.div
               key={i}
