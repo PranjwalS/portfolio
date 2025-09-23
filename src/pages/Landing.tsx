@@ -6,6 +6,8 @@ import PhotoBox from "../components/PhotoBox"
 import ExperienceBox from "../components/ExperienceBox";
 import ProjectsBox from "../components/ProjectsBox";
 import ContactBox from "../components/ContactBox";
+import CVBox from "../components/CVBox";
+import IconsBox from "../components/IconsBox";
 
 const Landing: React.FC = () => {
   return (
@@ -33,6 +35,12 @@ const Landing: React.FC = () => {
       </div>
       <div className="relative h-screen">
         <ContactBox className="absolute top-15 left-257" />
+      </div>
+      <div className="relative h-screen">
+        <CVBox className="absolute top-97 left-175"/>
+      </div>
+      <div className="relative h-screen">
+        <IconsBox className="absolute top-116 left-175" />
       </div>
     </section >
   );
