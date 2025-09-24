@@ -11,7 +11,7 @@ const ContactBox: React.FC<ContactBoxProps> = ({
 }) => {
 
     return (
-        <div className={`${className} w-82 h-80 opacity-90 rounded-[12px] overflow-hidden mb-2 relative`}>
+        <div className={`${className} w-full h-[51vh] opacity-90 rounded-[12px] overflow-hidden mb-2 relative`}>
             <img
                 src="/assets/cn.jpg"
                 className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition duration-300"

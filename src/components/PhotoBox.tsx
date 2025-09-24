@@ -10,10 +10,10 @@ const PhotoBox: React.FC<PhotoBoxProps> = ({
 
   return (
     <div
-      className={`${className} w-82 h-80 opacity-90 rounded-[12px] overflow-hidden mb-2`}
+      className={`${className} w-full h-[55vh] opacity-90 rounded-[12px] overflow-hidden mb-2`}
     >
       <img
-        src="/assets/placeholder.png"
+        src="/assets/me.png"
         className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition duration-300"
       />
     </div>

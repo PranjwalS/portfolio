@@ -4,7 +4,7 @@ import Landing from "../pages/Landing";
 import Experience from "../pages/Experience";
 import About from "../pages/About";
 import Library from "../pages/Library";
-
+import Projects from "../pages/Projects"
 
 export const router = createBrowserRouter([
   {
@@ -14,7 +14,8 @@ export const router = createBrowserRouter([
       { index: true, element: <Landing />},
       { path: "about", element: <About />},
       { path: "experience", element: <Experience />},
-      { path: "library", element: <Library />}
+      { path: "library", element: <Library />},
+      { path: "projects", element: <Projects />}
     ],
   },
 ]);

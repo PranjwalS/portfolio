@@ -19,7 +19,7 @@ const CVBox: React.FC<CVBoxProps> = ({
             download
             className={`block cursor-pointer bg-zinc-100 dark:bg-zinc-800 p-4 rounded-xl 
                  hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors duration-200 
-                 w-82 h-17 opacity-90 ${className}`}
+                 w-full h-[10vh] opacity-90 ${className}`}
         >
             <p className="text-black dark:text-white font-medium">{text}</p>
         </a>
