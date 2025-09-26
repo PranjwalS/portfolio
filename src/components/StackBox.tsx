@@ -13,7 +13,7 @@ const StackBox: React.FC<StackBoxProps> = ({
 
     return (
         <div
-            className={`cursor-pointer bg-zinc-100 dark:bg-zinc-800 p-4 rounded-xl transition-colors duration-200 w-full h-[25vh] opacity-90 ${className}`}
+            className={`cursor-pointer bg-zinc-100 dark:bg-zinc-800 p-4 rounded-xl transition-colors duration-200 w-full h-[21vh] opacity-90 ${className}`}
         >
             <p className="text-black dark:text-white font-medium">{text}</p>
         </div>

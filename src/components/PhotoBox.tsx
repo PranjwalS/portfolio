@@ -10,7 +10,7 @@ const PhotoBox: React.FC<PhotoBoxProps> = ({
 
   return (
     <div
-      className={`${className} w-full h-[55vh] opacity-90 rounded-[12px] overflow-hidden mb-2`}
+      className={`${className} w-full h-[59vh] opacity-90 rounded-[12px] overflow-hidden mb-2`}
     >
       <img
         src="/assets/me.png"

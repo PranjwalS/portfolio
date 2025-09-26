@@ -17,11 +17,11 @@ const CVBox: React.FC<CVBoxProps> = ({
         <a
             href={link}
             download
-            className={`block cursor-pointer bg-zinc-100 dark:bg-zinc-800 p-4 rounded-xl 
+            className={`block cursor-pointer bg-zinc-100 dark:bg-zinc-800 p-2 rounded-xl 
                  hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors duration-200 
-                 w-full h-[10vh] opacity-90 ${className}`}
+                 w-full h-[10vh] opacity-90 flex flex-col ${className}`}
         >
-            <p className="text-black dark:text-white font-medium">{text}</p>
+            <p className="mt-auto px-2 text-black dark:text-white font-medium">{text}</p>
         </a>
     )
 }

@@ -13,7 +13,7 @@ const ContactBox: React.FC<ContactBoxProps> = ({
     return (
         <div className={`${className} w-full h-[51vh] opacity-90 rounded-[12px] overflow-hidden mb-2 relative`}>
             <img
-                src="/assets/cn.jpg"
+                src="/assets/eye.png"
                 className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition duration-300"
             />
             <p className="absolute bottom-2 left-2 right-2 text-white font-medium bg-black/50 px-2 py-1 rounded">

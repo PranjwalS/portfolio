@@ -5,6 +5,7 @@ import Experience from "../pages/Experience";
 import About from "../pages/About";
 import Library from "../pages/Library";
 import Projects from "../pages/Projects"
+import ContactMe from "../pages/ContactMe";
 
 export const router = createBrowserRouter([
   {
@@ -15,7 +16,8 @@ export const router = createBrowserRouter([
       { path: "about", element: <About />},
       { path: "experience", element: <Experience />},
       { path: "library", element: <Library />},
-      { path: "projects", element: <Projects />}
+      { path: "projects", element: <Projects />},
+      { path: "contact", element: <ContactMe />}
     ],
   },
 ]);

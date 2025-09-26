@@ -8,9 +8,9 @@ const IconsBox: React.FC<IconsBoxProps> = ({
     className = ""
 }) => {
     return (
-        <section className="grid grid-cols-7 ">
+        <section className="grid grid-cols-6 ">
             
-            <div className="col-span-3 flex items-start justify-center py-6">
+            <div className="col-span-2 flex items-start justify-center py-6">
                 <img
                     src="/assets/icons/cat.gif"
                     alt="Cute Pixel Cat"
