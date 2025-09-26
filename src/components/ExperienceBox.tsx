@@ -27,7 +27,7 @@ const ExperienceBox: React.FC<ExperienceBoxProps> = ({
             <img
                 src="/assets/ofudacopy.jpg"
                 alt="Pattern"
-                className="flex-none h-full w-[12vh] rounded-md filter grayscale dark:brightness-50 dark:contrast-125 dark:hover:grayscale-0 dark:hover:brightness-70 hover:grayscale-0 transition duration-300 "/>
+                className="flex-none h-full w-[12vh] rounded-md filter grayscale dark:brightness-50 opacity-80 dark:contrast-125 dark:hover:grayscale-0 dark:hover:brightness-70 hover:grayscale-0 transition duration-300 "/>
         </div>
     )
 }

@@ -13,7 +13,7 @@ import ContactMeBox from "../components/ContactMeBox";
 const Landing: React.FC = () => {
   return (
     // <section className="flex w-screen h-screen overflow-hidden">
-    <section className="flex flex-row py-22 w-screen h-screen overflow-hidden">
+    <section className="flex flex-row py-22 w-screen h-screen">
       <h1 className="absolute top-10 inset-x-0 text-center text-[8rem] font-bold text-black dark:text-white opacity-100 select-none pointer-events-none">
         Pranjwal Singh
       </h1>
