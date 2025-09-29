@@ -14,27 +14,28 @@ const Landing: React.FC = () => {
   return (
     // <section className="flex w-screen h-screen overflow-hidden">
     <section className="flex flex-row py-22 w-screen h-screen">
-      <h1 className="absolute top-10 inset-x-0 text-center text-[8rem] font-bold text-black dark:text-white opacity-100 select-none pointer-events-none">
+
+      <h1 className="absolute top-10 inset-x-0 z-20 text-center text-[4rem] md:text-[6rem] lg:text-[8rem] font-bold text-black dark:text-white opacity-100 select-none pointer-events-none">
         Pranjwal Singh
       </h1>
 
-      <div className="flex flex-col gap-y-2 px-2 w-[21%]">
+      <div className="flex flex-col gap-y-2 px-2 z-20 w-[21%]">
         <AboutBox />
         <CVBox />
         <LibraryBox />
       </div>
 
-      <div className="flex flex-col gap-y-2 w-[19%]">
+      <div className="flex flex-col gap-y-2 z-20 w-[19%]">
         <StackBox />
         <PhotoBox />
       </div>
 
-      <div className="flex flex-col gap-y-2 px-2 w-[40%] h-full">
+      <div className="flex flex-col gap-y-2 px-2 z-20 w-[40%] h-full">
         <ExperienceBox />
         <ProjectsBox />
       </div>
 
-      <div className="flex flex-col w-[20%]">
+      <div className="flex flex-col z-20 w-[20%]">
         <ContactBox />
         <ContactMeBox />
         <IconsBox className="p-2" />

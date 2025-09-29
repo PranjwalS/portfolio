@@ -1,0 +1,412 @@
+From: <Saved by Blink>
+Snapshot-Content-Location: https://student.cs.uwaterloo.ca/~cs135/stepping/index.php?qid=a04a_Assn/10_required
+Subject: CS 135 Stepping Practice
+Date: Sun, 28 Sep 2025 14:11:50 -0400
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--LydZsXjrKjqeRi6Pz4YHUCDDwoj118NAuqDX8D1T2H----"
+
+
+------MultipartBoundary--LydZsXjrKjqeRi6Pz4YHUCDDwoj118NAuqDX8D1T2H----
+Content-Type: text/html
+Content-ID: <frame-0E3F75FBF3DB4CA2BE389DAA6F5943D4@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://student.cs.uwaterloo.ca/~cs135/stepping/index.php?qid=a04a_Assn/10_required
+
+<!DOCTYPE html><html><head><meta http-equiv=3D"Content-Type" content=3D"tex=
+t/html; charset=3DUTF-8"><link rel=3D"stylesheet" type=3D"text/css" href=3D=
+"cid:css-596fca8a-ed2e-4ef0-acd4-29c38e0cf07a@mhtml.blink" />
+<title>CS 135 Stepping Practice</title>
+
+
+
+<!-- add in CodeMirror files -->
+<link rel=3D"stylesheet" href=3D"https://student.cs.uwaterloo.ca/~cs135/ste=
+pping/codemirror/codemirror.css">
+
+
+
+
+</head>
+<body>
+
+<div class=3D"loggedin">Logged in as <b>p352sing</b></div>
+<!--
+<h1><a href=3D"/~cs135/stepping/index.php">CS 135 Stepping Practice</a></h1=
+>
+-->
+
+
+
+<h2>Back to <a href=3D"https://student.cs.uwaterloo.ca/~cs135/stepping/">St=
+epping Problem List</a></h2>
+<div id=3D"instructions">
+
+
+<p>Assume the following definitions:</p>
+<p>
+<span class=3D"code">
+  (<span class=3D"keyword">define</span> (<span class=3D"id">cheer-up</span=
+> <span class=3D"id">lst</span>)
+    (<span class=3D"keyword">cond</span>
+      [(<span class=3D"id">empty?</span> <span class=3D"id">lst</span>) <sp=
+an class=3D"id">empty</span>]
+      [<span class=3D"keyword">else</span> (<span class=3D"id">cons</span> =
+<span class=3D"quote">'</span><span class=3D"symbol">happy</span> (<span cl=
+ass=3D"id">cheer-up</span> (<span class=3D"id">rest</span> <span class=3D"i=
+d">lst</span>)))]))
+</span>
+
+</p><p>
+Produce the step-by-step evaluation of the following expression.
+</p></div>
+<div id=3D"loading" style=3D"display: none;">Loading... <span id=3D"loadspi=
+n"></span></div>
+<div id=3D"responses"><div><table><tbody><tr><td style=3D"width:15px;"></td=
+><td class=3D"code" style=3D"padding-right:20px;">(<span class=3D"id">cheer=
+-up</span> (<span class=3D"id">cons</span> <span class=3D"quote">'</span><s=
+pan class=3D"symbol">sad</span> (<span class=3D"id">cons</span> <span class=
+=3D"quote">'</span><span class=3D"symbol">meh</span> <span class=3D"id">emp=
+ty</span>)))</td><td>&nbsp;</td></tr></tbody></table></div></div>
+
+  <form id=3D"curform">
+  <table style=3D"width:100%;">
+    <tbody><tr>
+      <td style=3D"width:15px;">=E2=87=92</td>
+      <td style=3D"vertical-align:top;">
+        <textarea id=3D"stepinp" style=3D"display: none;"></textarea><div c=
+lass=3D"CodeMirror cm-s-default CodeMirror-focused" style=3D"width: 70%; he=
+ight: 175px;"><div style=3D"overflow: hidden; position: relative; width: 3p=
+x; height: 0px; top: 43.507px; left: 745.208px;"><textarea autocorrect=3D"o=
+ff" autocapitalize=3D"off" spellcheck=3D"false" style=3D"position: absolute=
+; padding: 0px; width: 1000px; height: 1em; outline: none; font-size: 4px;"=
+ tabindex=3D"0"></textarea></div><div class=3D"CodeMirror-hscrollbar" style=
+=3D"left: 0px;"><div style=3D"height: 1px; width: 0px;"></div></div><div cl=
+ass=3D"CodeMirror-vscrollbar"><div style=3D"width: 1px; height: 0px;"></div=
+></div><div class=3D"CodeMirror-scrollbar-filler"></div><div class=3D"CodeM=
+irror-gutter-filler"></div><div class=3D"CodeMirror-scroll" tabindex=3D"-1"=
+><div class=3D"CodeMirror-sizer" style=3D"min-width: 839.736px; margin-left=
+: 0px; min-height: 65.6042px;"><div style=3D"position: relative; top: 0px;"=
+><div class=3D"CodeMirror-lines"><div style=3D"position: relative; outline:=
+ none;"><div class=3D"CodeMirror-measure"></div><div style=3D"position: rel=
+ative; z-index: 1; display: none;"><div class=3D"CodeMirror-selected" style=
+=3D"position: absolute; left: 437.483px; top: 38.4028px; width: 31.7188px; =
+height: 19px;"></div></div><div class=3D"CodeMirror-code" style=3D""><pre> =
+<span class=3D"cm-bracket">(</span><span class=3D"cm-builtin">cond</span></=
+pre><pre>      <span class=3D"cm-bracket">[(</span><span class=3D"cm-variab=
+le">empty?</span> <span class=3D"cm-bracket">(</span><span class=3D"cm-buil=
+tin">cons</span> <span class=3D"cm-atom">'</span><span class=3D"cm-variable=
+">sad</span> <span class=3D"cm-bracket">(</span><span class=3D"cm-builtin">=
+cons</span> <span class=3D"cm-atom">'</span><span class=3D"cm-variable">meh=
+</span> <span class=3D"cm-variable">empty</span><span class=3D"cm-bracket">=
+)))</span> <span class=3D"cm-variable">empty</span><span class=3D"cm-bracke=
+t">]</span></pre><pre>      <span class=3D"cm-bracket">[</span><span class=
+=3D"cm-builtin">else</span> <span class=3D"cm-bracket">(</span><span class=
+=3D"cm-builtin">cons</span> <span class=3D"cm-atom">'</span><span class=3D"=
+cm-variable">happy</span> <span class=3D"cm-bracket">(</span><span class=3D=
+"cm-variable">cheer-up</span> <span class=3D"cm-bracket">(</span><span clas=
+s=3D"cm-variable">rest</span> <span class=3D"cm-bracket CodeMirror-matching=
+bracket">(</span><span class=3D"cm-builtin">cons</span> <span class=3D"cm-a=
+tom">'</span><span class=3D"cm-variable">sad</span> <span class=3D"cm-brack=
+et">(</span><span class=3D"cm-builtin">cons</span> <span class=3D"cm-atom">=
+'</span><span class=3D"cm-variable">meh</span> <span class=3D"cm-variable">=
+empty</span><span class=3D"cm-bracket">)</span><span class=3D"cm-bracket Co=
+deMirror-matchingbracket">)</span><span class=3D"cm-bracket">)))]))</span><=
+/pre></div><div class=3D"CodeMirror-cursor" style=3D"left: 744.097px; top: =
+38.4028px; height: 19px;">&nbsp;</div><div class=3D"CodeMirror-cursor CodeM=
+irror-secondarycursor" style=3D"display: none;">&nbsp;</div></div></div></d=
+iv></div><div style=3D"position: absolute; height: 30px; width: 1px; top: 6=
+5.6042px;"></div><div class=3D"CodeMirror-gutters" style=3D"display: none; =
+height: 175px;"></div></div></div>
+        <input type=3D"button" value=3D"Submit step">
+        <input type=3D"button" value=3D"Simplest form">
+        <input type=3D"button" value=3D"Error">
+        <input type=3D"button" value=3D"Hint" id=3D"hintbutton" disabled=3D=
+"">
+        <input type=3D"button" value=3D"Reindent All" id=3D"indentallbutton=
+">
+              </td>
+    </tr>
+  </tbody></table>
+  </form>=20
+ =20
+
+
+<div class=3D"footer">
+<div id=3D"showinstr"><a>Show instructions</a></div>
+<div id=3D"hideinstr"><a>Hide instructions</a>
+<ul>
+<li>Type the next step in the step-by-step evaluation of the above program
+into the text box, and click "Submit Step".</li>
+<li>If the given expression is already in simplest form, click "Simplest
+form".</li>
+<li>If the next step in simplifying the given expression will result in
+an error, click "Error".</li>
+<li>Click "Hint" to get a hint as to what the next step is.</li>
+<li>Click on the heading at the top of the page to get back to the list
+of practice problems.</li>
+<li><b>Keyboard short cuts:</b>
+  <ul>
+  <li>Tab and Shift-Tab:  move between the text box and the various buttons=
+</li>
+  <li>Ctrl-I:  Reindent all </li>
+  <li>Ctrl-D:  Clear text box (click on text box first)</li>
+  <li>Ctrl-Z:  Undo</li>
+  <li>Ctrl-Y:  Redo</li>
+  </ul>
+</li>
+
+</ul>
+</div>
+
+
+
+<hr>
+<p>CS 135 Stepping Practice by <a href=3D"http://www.cs.uwaterloo.ca/~iang/=
+" target=3D"_blank">Ian Goldberg</a>.  Last modified
+2025-09-03 14:30.<br>
+Experiencing problems with the site? <a href=3D"mailto:iang@cs.uwaterloo.ca=
+?subject=3DStepper%20site%20problems">Email a problem report</a>.<br>
+Suggestions for more practice questions? <a href=3D"mailto:iang@cs.uwaterlo=
+o.ca?subject=3DStepper%20site%20question%20suggestion">Email a suggestion</=
+a>.</p>
+</div>
+
+
+
+
+
+
+
+</body></html>
+------MultipartBoundary--LydZsXjrKjqeRi6Pz4YHUCDDwoj118NAuqDX8D1T2H----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://student.cs.uwaterloo.ca/~cs135/stepping/codemirror/codemirror.css
+
+@charset "utf-8";
+
+.CodeMirror { font-family: monospace; width: 100%; height: 100%; border-sty=
+le: solid; border-width: 2px; font-size: 120%; font-weight: bold; }
+
+.CodeMirror-scroll { overflow: auto; }
+
+.CodeMirror-lines { padding: 4px 0px; }
+
+.CodeMirror pre { padding: 0px 4px; }
+
+.CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler { background-color:=
+ white; }
+
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); backgroun=
+d-color: rgb(247, 247, 247); white-space: nowrap; }
+
+.CodeMirror-linenumbers { }
+
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; min-width: 20px; text-al=
+ign: right; color: rgb(153, 153, 153); }
+
+.CodeMirror div.CodeMirror-cursor { border-left: 1px solid black; z-index: =
+3; }
+
+.CodeMirror div.CodeMirror-secondarycursor { border-left: 1px solid silver;=
+ }
+
+.CodeMirror.cm-keymap-fat-cursor div.CodeMirror-cursor { width: auto; borde=
+r: 0px; background: rgb(119, 238, 119); z-index: 1; }
+
+.CodeMirror div.CodeMirror-cursor.CodeMirror-overwrite { }
+
+.cm-tab { display: inline-block; }
+
+.cm-s-default .cm-keyword { color: rgb(119, 0, 136); }
+
+.cm-s-default .cm-atom { color: rgb(34, 17, 153); }
+
+.cm-s-default .cm-number { color: rgb(17, 102, 68); }
+
+.cm-s-default .cm-def { color: rgb(0, 0, 255); }
+
+.cm-s-default .cm-variable { color: black; }
+
+.cm-s-default .cm-variable-2 { color: rgb(0, 85, 170); }
+
+.cm-s-default .cm-variable-3 { color: rgb(0, 136, 85); }
+
+.cm-s-default .cm-property { color: black; }
+
+.cm-s-default .cm-operator { color: black; }
+
+.cm-s-default .cm-comment { color: rgb(170, 85, 0); }
+
+.cm-s-default .cm-string { color: rgb(170, 17, 17); }
+
+.cm-s-default .cm-string-2 { color: rgb(255, 85, 0); }
+
+.cm-s-default .cm-meta { color: rgb(85, 85, 85); }
+
+.cm-s-default .cm-qualifier { color: rgb(85, 85, 85); }
+
+.cm-s-default .cm-builtin { color: rgb(51, 0, 170); }
+
+.cm-s-default .cm-bracket { color: rgb(153, 153, 119); }
+
+.cm-s-default .cm-tag { color: rgb(17, 119, 0); }
+
+.cm-s-default .cm-attribute { color: rgb(0, 0, 204); }
+
+.cm-s-default .cm-header { color: blue; }
+
+.cm-s-default .cm-quote { color: rgb(0, 153, 0); }
+
+.cm-s-default .cm-hr { color: rgb(153, 153, 153); }
+
+.cm-s-default .cm-link { color: rgb(0, 0, 204); }
+
+.cm-negative { color: rgb(221, 68, 68); }
+
+.cm-positive { color: rgb(34, 153, 34); }
+
+.cm-header, .cm-strong { font-weight: bold; }
+
+.cm-em { font-style: italic; }
+
+.cm-link { text-decoration: underline; }
+
+.cm-s-default .cm-error { color: rgb(255, 0, 0); }
+
+.cm-invalidchar { color: rgb(255, 0, 0); }
+
+div.CodeMirror span.CodeMirror-matchingbracket { color: black; background-c=
+olor: rgb(204, 204, 204); }
+
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34)=
+; }
+
+.CodeMirror-activeline-background { background: rgb(232, 242, 255); }
+
+.CodeMirror { line-height: 1; position: relative; overflow: hidden; backgro=
+und: white; color: black; }
+
+.CodeMirror-scroll { margin-bottom: -30px; margin-right: -30px; padding-bot=
+tom: 30px; padding-right: 30px; height: 100%; outline: none; position: rela=
+tive; box-sizing: content-box; }
+
+.CodeMirror-sizer { position: relative; }
+
+.CodeMirror-vscrollbar, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-fille=
+r, .CodeMirror-gutter-filler { position: absolute; z-index: 6; display: non=
+e; }
+
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden scroll; }
+
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: scroll hidden; }
+
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bott=
+om: 30px; z-index: 3; }
+
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content=
+-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+
+.CodeMirror-lines { cursor: text; }
+
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: transp=
+arent; font-family: inherit; font-size: inherit; margin: 0px; white-space: =
+pre; overflow-wrap: normal; line-height: inherit; color: inherit; z-index: =
+2; position: relative; overflow: visible; }
+
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; wo=
+rd-break: normal; }
+
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-con=
+tent; }
+
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+
+.CodeMirror-widget { }
+
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflo=
+w: hidden; visibility: hidden; }
+
+.CodeMirror-measure pre { position: static; }
+
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden;=
+ border-right: none; width: 0px; }
+
+.CodeMirror-focused div.CodeMirror-cursor { visibility: visible; }
+
+.CodeMirror-selected { background: rgb(217, 217, 217); }
+
+.CodeMirror-focused .CodeMirror-selected { background: rgb(215, 212, 240); =
+}
+
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+
+.CodeMirror span { }
+
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+------MultipartBoundary--LydZsXjrKjqeRi6Pz4YHUCDDwoj118NAuqDX8D1T2H----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-596fca8a-ed2e-4ef0-acd4-29c38e0cf07a@mhtml.blink
+
+@charset "utf-8";
+
+h1 { font-family: Verdana, Geneva, Arial, sans-serif; font-weight: bold; fo=
+nt-size: 16pt; color: rgb(114, 114, 114); }
+
+h2, h3 { font-family: Verdana, Geneva, Arial, sans-serif; font-weight: bold=
+; color: rgb(114, 114, 114); }
+
+body { font-size: 16px; font-family: "Work Sans", Helvetica, Tahoma, Geneva=
+, Arial, sans-serif; font-weight: 300; line-height: 1.6; }
+
+div.loggedin { float: right; background: rgb(255, 255, 204); font-family: V=
+erdana, Geneva, Arial, sans-serif; padding: 3px; border: solid red; }
+
+div#responses { font-family: Verdana, Geneva, Arial, sans-serif; margin-top=
+: 2ex; }
+
+div#hideinstr { display: none; }
+
+div.footer { font-family: Verdana, Geneva, Arial, sans-serif; font-size: sm=
+aller; }
+
+td.code { font-family: monospace; white-space: pre; }
+
+span.code { font-family: monospace; white-space: pre; }
+
+span.hint { background: rgb(221, 221, 0); }
+
+span.correct { color: rgb(0, 136, 0); }
+
+span.incorrect { color: rgb(136, 0, 0); }
+
+span.keyword { font-weight: bold; }
+
+span.id { font-style: italic; }
+
+span.symbol { font-family: sans-serif; }
+
+span.error { background: red; }
+
+div.complete { margin-bottom: 1ex; margin-top: 1ex; }
+
+span.complete { font-family: Verdana, Geneva, Arial, sans-serif; padding: 3=
+px; border: solid blue; background: rgb(255, 255, 204); }
+------MultipartBoundary--LydZsXjrKjqeRi6Pz4YHUCDDwoj118NAuqDX8D1T2H------

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { LuSun, LuMoon } from "react-icons/lu"
 
 
+
 interface HeaderProps {
   student?: string,
   role?: string,
@@ -54,7 +55,7 @@ const Header: React.FC<HeaderProps> = ({
 
 
   return (
-    <header className="w-full h-20 bg-white dark:bg-black text-black dark:text-white px-6 font-sans flex font-sans font-medium items-center justify-between" >
+    <header className="relative w-full h-20 bg-white dark:bg-zinc-900 text-black dark:text-white px-6 font-sans flex font-sans font-medium items-center justify-between">
       <div className="flex items-center gap-28">
         <span>{student}</span>
         <span>{role}</span>
@@ -64,20 +65,20 @@ const Header: React.FC<HeaderProps> = ({
         <span>{location} ⋅ {time} ⋅ {weather}</span>
 
         <div className="flex items-center">
-          <div className="bg-white border dark:bg-black p-2 rounded-xl flex  gap-x-2"> 
+          <div className="bg-white border dark:bg-black p-2 rounded-xl flex  gap-x-2">
             <button
-              onClick={() => setTheme('light')} 
+              onClick={() => setTheme('light')}
               className={`bg-transparent p-2 hover:bg-zinc-200 dark:hover:bg-zinc-100/10 rounded-lg text-black dark:text-white ${theme === 'light' ? 'bg-zinc-300 dark:bg-zinc-600' : ''}`}>
               <LuSun />
             </button>
             <button
-              onClick={() => setTheme('dark')} 
+              onClick={() => setTheme('dark')}
               className={`bg-transparent p-2 hover:bg-zinc-200 dark:hover:bg-zinc-100/10 rounded-lg text-black dark:text-white ${theme === 'dark' ? 'bg-zinc-300 dark:bg-zinc-600' : ''}`}>
               <LuMoon />
             </button>
           </div>
         </div>
-        
+
       </div>
     </header>
   )
