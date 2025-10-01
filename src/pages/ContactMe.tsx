@@ -2,7 +2,7 @@ import React from "react";
 
 const ContactMe: React.FC = () => {
     return(
-        <div>Hallo AMERICA</div>
+        <div>Hallo AMERICA!!!</div>
     )
 }
 
