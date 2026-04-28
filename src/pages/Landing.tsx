@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import Header from "../components/Header";
 import { LuSun, LuMoon, LuLinkedin, LuGithub } from "react-icons/lu";
+import ProjectsModal from "../components/ProjectsModal";
 
 const Landing: React.FC = () => {
   const [theme, setTheme] = useState<"dark" | "light">("dark");
-
+  const [isProjectsOpen, setIsProjectsOpen] = useState(false);
   return (
     <>
       <style>{`
@@ -118,6 +119,8 @@ const Landing: React.FC = () => {
         /* LINKS CUSTOM */
         .links-container {
           display: flex;
+          flex-direction: column;
+          gap: var(--gap);
           height: 100%;
         }
 
@@ -126,6 +129,7 @@ const Landing: React.FC = () => {
           flex-direction: column;
           gap: var(--gap);
           width: 100%;
+          height: 100%;
         }
 
         .resume-box {
@@ -139,6 +143,9 @@ const Landing: React.FC = () => {
           text-decoration: none;
           color: var(--text);
           transition: 0.2s;
+          height: 40%;
+          flex-shrink: 0;
+          font-weight: 500;
         }
 
         .resume-box:hover {
@@ -146,14 +153,39 @@ const Landing: React.FC = () => {
           color: #000;
         }
 
-        .link-row {
+        /* 2x3 grid: top 30%, bottom 30% */
+        .links-grid {
           display: grid;
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: 1fr 2fr 1fr;
+          grid-template-rows: 1fr 1fr;
           gap: var(--gap);
           flex: 1;
+          min-height: 0;
         }
 
-        .link-box {
+        /* Top row (row 1): LinkedIn 1/3, Theme 2/3 */
+        .links-grid > .link-item:nth-child(1) {
+          grid-column: 1;
+          grid-row: 1;
+        }
+
+        .links-grid > .link-item:nth-child(2) {
+          grid-column: 2 / 4;
+          grid-row: 1;
+        }
+
+        /* Bottom row (row 2): + 2/3, GitHub 1/3 */
+        .links-grid > .link-item:nth-child(3) {
+          grid-column: 1 / 3;
+          grid-row: 2;
+        }
+
+        .links-grid > .link-item:nth-child(4) {
+          grid-column: 3;
+          grid-row: 2;
+        }
+
+        .link-item {
           display: flex;
           align-items: center;
           justify-content: center;
@@ -164,9 +196,11 @@ const Landing: React.FC = () => {
           transition: 0.2s;
           color: var(--text);
           text-decoration: none;
+          min-height: 0;
+          font-size: clamp(16px, 2vw, 24px);
         }
 
-        .link-box:hover {
+        .link-item:hover {
           background: var(--primary);
           color: #000;
         }
@@ -175,17 +209,29 @@ const Landing: React.FC = () => {
           display: flex;
           justify-content: center;
           align-items: center;
-          gap: 6px;
-          border: 1px solid var(--border);
-          border-radius: var(--radius);
+          gap: clamp(3px, 0.5vw, 8px);
+          background: transparent;
+          border: none;
+          height: 100%;
+          width: 100%;
         }
 
         .theme-btn {
           background: transparent;
           border: none;
           cursor: pointer;
-          padding: 6px;
+          padding: clamp(4px, 0.8vw, 8px);
           color: var(--text);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: 0.2s;
+          flex: 1;
+          font-size: clamp(14px, 2vw, 20px);
+        }
+
+        .theme-btn:hover {
+          color: var(--primary);
         }
 
         .theme-btn.active {
@@ -219,77 +265,88 @@ const Landing: React.FC = () => {
           </div>
 
           {/* RIGHT */}
-          <div className="right-grid">
+<div className="right-grid">
 
-            {/* TOP */}
-            <div className="top-row">
-              <div className="box">
-                <span className="box-label">Education</span>
-              </div>
+  {/* TOP */}
+  <div className="top-row">
+    <div className="box">
+      <span className="box-label">Education</span>
+    </div>
 
-              <div className="box">
-                <span className="box-label">Experience</span>
-              </div>
-            </div>
+    <div className="box">
+      <span className="box-label">Experience</span>
+    </div>
+  </div>
 
-            {/* BOTTOM */}
-            <div className="bottom-row">
-              <div className="box">
-                <span className="box-label">Projects</span>
-              </div>
+  {/* BOTTOM (PUT THIS BACK) */}
+  <div className="bottom-row">
+    
+    {/* Projects */}
+    <div
+      className="box"
+      style={{ cursor: "pointer" }}
+      onClick={() => setIsProjectsOpen(true)}
+    >
+      <span className="box-label">Projects</span>
+    </div>
 
-              <div className="links-container">
-                <div className="custom-links">
+    {/* Links */}
+    <div className="links-container">
+      <div className="custom-links">
 
-                  {/* Resume */}
-                  <a href="/resume.pdf" className="resume-box">
-                    Download Resume
-                  </a>
+        <a href="/resume.pdf" className="resume-box">
+          Download Resume
+        </a>
 
-                  {/* Row 1 */}
-                  <div className="link-row">
-                    <a href="https://linkedin.com" className="link-box">
-                      <LuLinkedin />
-                    </a>
+        <div className="links-grid">
+          <a href="https://linkedin.com" className="link-item" target="_blank" rel="noopener noreferrer">
+            <LuLinkedin />
+          </a>
 
-                    <div className="theme-switcher">
-                      <button
-                        onClick={() => setTheme("light")}
-                        className={`theme-btn ${theme === "light" ? "active" : ""}`}
-                      >
-                        <LuSun />
-                      </button>
-                      <button
-                        onClick={() => setTheme("dark")}
-                        className={`theme-btn ${theme === "dark" ? "active" : ""}`}
-                      >
-                        <LuMoon />
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Row 2 */}
-                  <div className="link-row">
-                    <a href="https://github.com" className="link-box">
-                      <LuGithub />
-                    </a>
-
-                    <div className="link-box">
-                      +
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-
+          <div className="link-item">
+            <div className="theme-switcher">
+              <button
+                onClick={() => setTheme("light")}
+                className={`theme-btn ${theme === "light" ? "active" : ""}`}
+              >
+                <LuSun />
+              </button>
+              <button
+                onClick={() => setTheme("dark")}
+                className={`theme-btn ${theme === "dark" ? "active" : ""}`}
+              >
+                <LuMoon />
+              </button>
             </div>
           </div>
+
+          <div
+            className="link-item"
+            onClick={() => setIsProjectsOpen(true)}
+          >
+            +
+          </div>
+
+          <a href="https://github.com" className="link-item" target="_blank" rel="noopener noreferrer">
+            <LuGithub />
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
         </div>
 
         <div className="footer-bar">
           stack animation · · ·
         </div>
       </div>
+      <ProjectsModal
+  isOpen={isProjectsOpen}
+  onClose={() => setIsProjectsOpen(false)}
+/>
     </>
   );
 };

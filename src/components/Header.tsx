@@ -14,13 +14,12 @@ const Header: React.FC<HeaderProps> = ({
   theme,
   setTheme,
 }) => {
-  const [location, setLocation] = useState("...");
-  const [weather, setWeather] = useState("--°C");
+  const [location, setLocation] = useState("Loading...");
+  const [weather, setWeather] = useState("0°C");
   const [time, setTime] = useState(
     new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
   );
 
-  // ⏱ time updater
   useEffect(() => {
     const interval = setInterval(() => {
       setTime(
@@ -33,101 +32,65 @@ const Header: React.FC<HeaderProps> = ({
     return () => clearInterval(interval);
   }, []);
 
-  // 🌍 location + weather
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchCityAndWeather = async () => {
       try {
         const res = await fetch("https://ipapi.co/json/");
         const data = await res.json();
 
-        if (!data || !data.latitude || !data.longitude) {
-          throw new Error("Invalid location data");
-        }
-
-        setLocation(data.city || "Unknown");
+        const city = data.city;
+        setLocation(city);
 
         const weatherRes = await fetch(
           `https://api.open-meteo.com/v1/forecast?latitude=${data.latitude}&longitude=${data.longitude}&current_weather=true`
         );
         const weatherData = await weatherRes.json();
 
-        if (weatherData?.current_weather?.temperature !== undefined) {
-          setWeather(
-            `${Math.round(weatherData.current_weather.temperature)}°C`
-          );
-        } else {
-          setWeather("N/A");
-        }
+        setWeather(
+          `${Math.round(weatherData.current_weather.temperature)}°C`
+        );
       } catch (err) {
-        console.error("Fetch error:", err);
+        console.error("Error fetching location/weather:", err);
         setLocation("Unknown");
         setWeather("N/A");
       }
     };
 
-    fetchData();
+    fetchCityAndWeather();
   }, []);
 
   return (
-    <header
-      className="w-full flex items-center justify-between px-6"
-      style={{
-        height: "var(--header-h)",
-        background: "var(--bg)",
-        color: "var(--text)",
-        fontSize: "var(--fs-ui)",
-        borderBottom: "1px solid var(--border)",
-      }}
-    >
-      {/* LEFT */}
-      <div className="flex items-center gap-8">
+    <header className="relative w-full h-20 bg-white dark:bg-zinc-900 text-black dark:text-white px-6 font-sans flex font-medium items-center justify-between">
+      <div className="flex items-center gap-28">
         <span>{student}</span>
         <span>{role}</span>
       </div>
 
-      {/* RIGHT */}
       <div className="flex items-center gap-6">
         <span>
           {location} ⋅ {time} ⋅ {weather}
         </span>
 
-        {/* Theme switch */}
-        <div
-          style={{
-            display: "flex",
-            gap: "4px",
-            background: "var(--border)",
-            borderRadius: "8px",
-            padding: "4px",
-          }}
-        >
-          <button
-            onClick={() => setTheme("light")}
-            style={{
-              background: theme === "light" ? "var(--primary)" : "transparent",
-              border: "none",
-              padding: "6px",
-              borderRadius: "6px",
-              cursor: "pointer",
-              color: theme === "light" ? "#000" : "var(--text)",
-            }}
-          >
-            <LuSun />
-          </button>
+        <div className="flex items-center">
+          <div className="bg-white border dark:bg-black p-2 rounded-xl flex gap-x-2">
+            <button
+              onClick={() => setTheme("light")}
+              className={`bg-transparent p-2 hover:bg-zinc-200 dark:hover:bg-zinc-100/10 rounded-lg text-black dark:text-white ${
+                theme === "light" ? "bg-zinc-300 dark:bg-zinc-600" : ""
+              }`}
+            >
+              <LuSun />
+            </button>
 
-          <button
-            onClick={() => setTheme("dark")}
-            style={{
-              background: theme === "dark" ? "var(--primary)" : "transparent",
-              border: "none",
-              padding: "6px",
-              borderRadius: "6px",
-              cursor: "pointer",
-              color: theme === "dark" ? "#000" : "var(--text)",
-            }}
-          >
-            <LuMoon />
-          </button>
+            <button
+              onClick={() => setTheme("dark")}
+              className={`bg-transparent p-2 hover:bg-zinc-200 dark:hover:bg-zinc-100/10 rounded-lg text-black dark:text-white ${
+                theme === "dark" ? "bg-zinc-300 dark:bg-zinc-600" : ""
+              }`}
+            >
+              <LuMoon />
+            </button>
+          </div>
         </div>
       </div>
     </header>
