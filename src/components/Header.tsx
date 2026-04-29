@@ -9,8 +9,8 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({
-  student = "UW BCS HC 1A Student",
-  role = "Full Stack Web/App Dev",
+  student = "UWaterloo Computer Science Honors (+ Hardware Specialization)",
+  role = "Full Stack Web/App + ML/AI Dev",
   theme,
   setTheme,
 }) => {

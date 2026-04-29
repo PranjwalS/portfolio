@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import Header from "../components/Header";
 import { LuSun, LuMoon, LuLinkedin, LuGithub } from "react-icons/lu";
-import ProjectsModal from "../components/ProjectsModal";
+import ProjectsPane from "../components/ProjectsPane";
+import EducationPane from "../components/EducationPane";
+import ExperiencePane from "../components/ExperiencePane";
 
 const Landing: React.FC = () => {
   const [theme, setTheme] = useState<"dark" | "light">("dark");
   const [isProjectsOpen, setIsProjectsOpen] = useState(false);
+  const [isEducationOpen, setIsEducationOpen] = useState(false);
+  const [isExperienceOpen, setIsExperienceOpen] = useState(false);
+
   return (
     <>
       <style>{`
@@ -39,15 +44,9 @@ const Landing: React.FC = () => {
           --card: #f9f9f9;
         }
 
-        * {
-          box-sizing: border-box;
-          margin: 0;
-          padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        html, body {
-          font-family: 'Open Sauce Sans', sans-serif;
-        }
+        html, body { font-family: 'Open Sauce Sans', sans-serif; }
 
         .page {
           width: 100vw;
@@ -66,18 +65,14 @@ const Landing: React.FC = () => {
           gap: var(--gap);
         }
 
-        /* LEFT */
         .left-col {
           display: flex;
           flex-direction: column;
           gap: var(--gap);
         }
 
-        .about-box {
-          flex: 1;
-        }
+        .about-box { flex: 1; }
 
-        /* RIGHT */
         .right-grid {
           display: flex;
           flex-direction: column;
@@ -99,7 +94,6 @@ const Landing: React.FC = () => {
           flex: 1;
         }
 
-        /* BOX */
         .box {
           background: var(--card);
           border: 1px solid var(--border);
@@ -107,6 +101,19 @@ const Landing: React.FC = () => {
           padding: var(--pad-box);
           display: flex;
           flex-direction: column;
+          transition: border-color 0.2s;
+        }
+
+        .box.clickable {
+          cursor: pointer;
+        }
+
+        .box.clickable:hover {
+          border-color: #3a3a3a;
+        }
+
+        .light .box.clickable:hover {
+          border-color: #c0c0c0;
         }
 
         .box-label {
@@ -116,7 +123,6 @@ const Landing: React.FC = () => {
           letter-spacing: 0.1em;
         }
 
-        /* LINKS CUSTOM */
         .links-container {
           display: flex;
           flex-direction: column;
@@ -146,14 +152,16 @@ const Landing: React.FC = () => {
           height: 40%;
           flex-shrink: 0;
           font-weight: 500;
+          font-size: var(--fs-ui);
+          letter-spacing: 0.04em;
         }
 
         .resume-box:hover {
           background: var(--primary);
           color: #000;
+          border-color: var(--primary);
         }
 
-        /* 2x3 grid: top 30%, bottom 30% */
         .links-grid {
           display: grid;
           grid-template-columns: 1fr 2fr 1fr;
@@ -163,27 +171,10 @@ const Landing: React.FC = () => {
           min-height: 0;
         }
 
-        /* Top row (row 1): LinkedIn 1/3, Theme 2/3 */
-        .links-grid > .link-item:nth-child(1) {
-          grid-column: 1;
-          grid-row: 1;
-        }
-
-        .links-grid > .link-item:nth-child(2) {
-          grid-column: 2 / 4;
-          grid-row: 1;
-        }
-
-        /* Bottom row (row 2): + 2/3, GitHub 1/3 */
-        .links-grid > .link-item:nth-child(3) {
-          grid-column: 1 / 3;
-          grid-row: 2;
-        }
-
-        .links-grid > .link-item:nth-child(4) {
-          grid-column: 3;
-          grid-row: 2;
-        }
+        .links-grid > .link-item:nth-child(1) { grid-column: 1; grid-row: 1; }
+        .links-grid > .link-item:nth-child(2) { grid-column: 2 / 4; grid-row: 1; }
+        .links-grid > .link-item:nth-child(3) { grid-column: 1 / 3; grid-row: 2; }
+        .links-grid > .link-item:nth-child(4) { grid-column: 3; grid-row: 2; }
 
         .link-item {
           display: flex;
@@ -203,6 +194,7 @@ const Landing: React.FC = () => {
         .link-item:hover {
           background: var(--primary);
           color: #000;
+          border-color: var(--primary);
         }
 
         .theme-switcher {
@@ -230,13 +222,8 @@ const Landing: React.FC = () => {
           font-size: clamp(14px, 2vw, 20px);
         }
 
-        .theme-btn:hover {
-          color: var(--primary);
-        }
-
-        .theme-btn.active {
-          color: var(--primary);
-        }
+        .theme-btn:hover { color: var(--primary); }
+        .theme-btn.active { color: var(--primary); }
 
         .footer-bar {
           height: var(--footer-h);
@@ -253,100 +240,134 @@ const Landing: React.FC = () => {
         <Header theme={theme} setTheme={setTheme} />
 
         <div className="bento-area">
+
           {/* LEFT */}
           <div className="left-col">
             <div className="box about-box">
               <span className="box-label">About</span>
             </div>
-
             <div className="box">
               <span className="box-label">Contact</span>
             </div>
           </div>
 
           {/* RIGHT */}
-<div className="right-grid">
+          <div className="right-grid">
 
-  {/* TOP */}
-  <div className="top-row">
-    <div className="box">
-      <span className="box-label">Education</span>
-    </div>
+            {/* TOP ROW */}
+            <div className="top-row">
 
-    <div className="box">
-      <span className="box-label">Experience</span>
-    </div>
-  </div>
-
-  {/* BOTTOM (PUT THIS BACK) */}
-  <div className="bottom-row">
-    
-    {/* Projects */}
-    <div
-      className="box"
-      style={{ cursor: "pointer" }}
-      onClick={() => setIsProjectsOpen(true)}
-    >
-      <span className="box-label">Projects</span>
-    </div>
-
-    {/* Links */}
-    <div className="links-container">
-      <div className="custom-links">
-
-        <a href="/resume.pdf" className="resume-box">
-          Download Resume
-        </a>
-
-        <div className="links-grid">
-          <a href="https://linkedin.com" className="link-item" target="_blank" rel="noopener noreferrer">
-            <LuLinkedin />
-          </a>
-
-          <div className="link-item">
-            <div className="theme-switcher">
-              <button
-                onClick={() => setTheme("light")}
-                className={`theme-btn ${theme === "light" ? "active" : ""}`}
+              {/* Education — clickable */}
+              <div
+                className="box clickable"
+                onClick={() => setIsEducationOpen(true)}
               >
-                <LuSun />
-              </button>
-              <button
-                onClick={() => setTheme("dark")}
-                className={`theme-btn ${theme === "dark" ? "active" : ""}`}
+                <span className="box-label">Education</span>
+              </div>
+
+              {/* Experience — clickable */}
+              <div
+                className="box clickable"
+                onClick={() => setIsExperienceOpen(true)}
               >
-                <LuMoon />
-              </button>
+                <span className="box-label">Experience</span>
+              </div>
+
+            </div>
+
+            {/* BOTTOM ROW */}
+            <div className="bottom-row">
+
+              {/* Projects — clickable */}
+              <div
+                className="box clickable"
+                onClick={() => setIsProjectsOpen(true)}
+              >
+                <span className="box-label">Projects</span>
+              </div>
+
+              {/* Links */}
+              <div className="links-container">
+                <div className="custom-links">
+
+                  <a href="/resume.pdf" className="resume-box">
+                    Download Resume
+                  </a>
+
+                  <div className="links-grid">
+                    <a
+                      href="https://linkedin.com/in/pranjwal-singh-01979b242/"
+                      className="link-item"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <LuLinkedin />
+                    </a>
+
+                    <div className="link-item">
+                      <div className="theme-switcher">
+                        <button
+                          onClick={() => setTheme("light")}
+                          className={`theme-btn ${theme === "light" ? "active" : ""}`}
+                        >
+                          <LuSun />
+                        </button>
+                        <button
+                          onClick={() => setTheme("dark")}
+                          className={`theme-btn ${theme === "dark" ? "active" : ""}`}
+                        >
+                          <LuMoon />
+                        </button>
+                      </div>
+                    </div>
+
+                    <div
+                      className="link-item"
+                      onClick={() => setIsProjectsOpen(true)}
+                      title="View Projects"
+                    >
+                      +
+                    </div>
+
+                    <a
+                      href="https://github.com/Pranjwals"
+                      className="link-item"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <LuGithub />
+                    </a>
+                  </div>
+
+                </div>
+              </div>
+
             </div>
           </div>
-
-          <div
-            className="link-item"
-            onClick={() => setIsProjectsOpen(true)}
-          >
-            +
-          </div>
-
-          <a href="https://github.com" className="link-item" target="_blank" rel="noopener noreferrer">
-            <LuGithub />
-          </a>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-</div>
         </div>
 
         <div className="footer-bar">
           stack animation · · ·
         </div>
+
+        {/* Panes */}
+        <ProjectsPane
+          isOpen={isProjectsOpen}
+          onClose={() => setIsProjectsOpen(false)}
+          theme={theme}
+        />
+        <EducationPane
+          isOpen={isEducationOpen}
+          onClose={() => setIsEducationOpen(false)}
+          theme={theme}
+        />
+        <ExperiencePane
+          isOpen={isExperienceOpen}
+          onClose={() => setIsExperienceOpen(false)}
+          theme={theme}
+        />
+
       </div>
-      <ProjectsModal
-  isOpen={isProjectsOpen}
-  onClose={() => setIsProjectsOpen(false)}
-/>
     </>
   );
 };
