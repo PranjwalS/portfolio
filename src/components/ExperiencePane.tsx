@@ -1,5 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import React from "react";
 import { Pane, PaneCard, PaneSectionTitle } from "./Pane";
+import type { InnerPaneData } from "./InnerPane";
 
 interface ExperiencePaneProps {
   isOpen: boolean;
@@ -16,30 +19,57 @@ const ExperiencePane: React.FC<ExperiencePaneProps> = ({ isOpen, onClose, theme 
       name="EdBridges Inc. — Askly.today"
       meta="Jun – Aug 2026"
       sub="AI Software Engineer"
-      desc="Developing RAG pipelines and improving LLM response quality for an AI-powered learning assistant. Python backend systems, prompt engineering workflows, and retrieval/ranking/chunking architecture."
-      tags={["Python", "RAG", "LangChain", "Pinecone", "MongoDB", "Prompt Engineering"]}
-      previewImage="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&auto=format&fit=crop"
-      href="https://askly.today"
+      desc="RAG pipelines, LLM response quality, Python backend systems, prompt engineering."
+      tags={["Python", "RAG", "LangChain", "Pinecone", "MongoDB"]}
+      inner={{
+        title: "EdBridges Inc.",
+        subtitle: "AI Software Engineer — Askly.today",
+        timeframe: "Jun – Aug 2026",
+        image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&auto=format&fit=crop",
+        description:
+          "Working on Askly.today, an AI-powered learning assistant. Core work involves designing and improving RAG pipelines — retrieval, ranking, and chunking architecture — and systematically improving LLM response quality through prompt engineering and evaluation tooling. Also building Python backend systems and QA infrastructure to measure answer accuracy.",
+        tags: ["Python", "RAG", "LangChain", "Pinecone", "MongoDB", "Prompt Engineering", "FastAPI"],
+        upcoming: [
+          "Release 3 feature rollout",
+          "Evaluation pipeline for LLM response quality",
+          "Chunking strategy improvements for long documents",
+        ],
+        liveUrl: "https://askly.today",
+      }}
     />
 
     <PaneCard
       name="Ericsson"
       meta="2024"
       sub="DevOps Engineer Intern"
-      desc="Monitoring and observability across Kubernetes clusters. Built and maintained Jenkins pipelines. Grafana dashboards for infrastructure health. Optimized Celery/Redis polling on Upstash to reduce idle command volume."
-      tags={["Kubernetes", "Jenkins", "Grafana", "Redis", "Celery", "Upstash"]}
-      previewImage="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&auto=format&fit=crop"
-      href="https://ericsson.com"
+      desc="Kubernetes monitoring, Jenkins pipelines, Grafana dashboards, Redis/Celery optimization."
+      tags={["Kubernetes", "Jenkins", "Grafana", "Redis", "Celery"]}
+      inner={{
+        title: "Ericsson",
+        subtitle: "DevOps Engineer Intern",
+        timeframe: "2024",
+        image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&auto=format&fit=crop",
+        description:
+          "Monitoring and observability work across Kubernetes clusters in a production environment. Built and maintained Jenkins CI/CD pipelines. Set up Grafana dashboards for infrastructure health tracking. Reduced idle Redis command volume by optimizing Celery polling intervals on Upstash — meaningful cost and latency improvement on a high-throughput system.",
+        tags: ["Kubernetes", "Jenkins", "Grafana", "Redis", "Celery", "Upstash", "Docker", "Linux"],
+      }}
     />
 
     <PaneCard
       name="Dept. of National Defence — CJCR"
       meta="2023"
       sub="Full Stack Developer Intern"
-      desc="Full-stack development on internal tools. Vue.js frontend, .NET backend, SignalR for real-time updates. Power Platform automation."
-      tags={["Vue.js", ".NET", "SignalR", "Power Platform", "C#"]}
-      previewImage="https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?w=600&auto=format&fit=crop"
-      href="https://forces.gc.ca"
+      desc="Vue.js frontend, .NET backend, SignalR for real-time updates, Power Platform automation."
+      tags={["Vue.js", ".NET", "SignalR", "Power Platform"]}
+      inner={{
+        title: "Dept. of National Defence",
+        subtitle: "Full Stack Developer Intern — CJCR",
+        timeframe: "2023",
+        image: "https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?w=800&auto=format&fit=crop",
+        description:
+          "Full-stack development on internal tools for the Canadian Joint Cadet Recruiting organization. Built features across the stack — Vue.js on the frontend, .NET on the backend. Integrated SignalR for real-time data updates. Also built Power Platform automation flows to reduce manual administrative work.",
+        tags: ["Vue.js", ".NET", "C#", "SignalR", "Power Platform", "Azure"],
+      }}
     />
 
     <PaneSectionTitle>Other</PaneSectionTitle>
@@ -48,67 +78,11 @@ const ExperiencePane: React.FC<ExperiencePaneProps> = ({ isOpen, onClose, theme 
       name="Math Department — University of Waterloo"
       meta="2025 – Present"
       sub="Course Grader"
-      desc="Grading assignments and providing feedback for undergraduate mathematics courses. ~6 hrs/week."
-      tags={["Grading", "Mathematics"]}
+      desc="Grading undergraduate mathematics assignments. ~6 hrs/week."
+      tags={["Mathematics", "Grading"]}
     />
 
   </Pane>
 );
 
 export default ExperiencePane;
-
-
-
-
-
-
-
-// import React from "react";
-// import { Pane, PaneCard, PaneSectionTitle } from "./Pane";
-
-// interface ExperiencePaneProps {
-//   isOpen: boolean;
-//   onClose: () => void;
-//   theme: "dark" | "light";
-// }
-
-// const ExperiencePane: React.FC<ExperiencePaneProps> = ({ isOpen, onClose, theme }) => (
-//   <Pane open={isOpen} onClose={onClose} title="Experience" theme={theme}>
-
-//     <PaneSectionTitle>Work</PaneSectionTitle>
-
-//     <PaneCard
-//       name="EdBridges Inc. — Askly.today"
-//       meta="Jun 2026 – Aug 2026 — Remote"
-//       sub="AI Software Engineer"
-//       desc="Developing RAG pipelines and improving LLM response quality for an AI-powered learning assistant. Building Python backend systems and prompt engineering workflows. Working on retrieval, ranking, and chunking architecture."
-//       tags={["Python", "RAG", "LangChain", "Pinecone", "MongoDB", "Prompt Engineering"]}
-//     />
-
-//     <PaneCard
-//       name="Math Department — University of Waterloo"
-//       meta="May 2026 - Aug 2026 — Waterloo, CAN"
-//       sub="Course Grader"
-//       desc="Grading assignments and providing feedback for undergraduate mathematics courses. ~6 hrs/week."
-//       tags={["Grading", "Mathematics"]}
-//     />
-//     <PaneCard
-//       name="Cadets, Dept. of National Defence"
-//       meta="June 2025 - Aug 2025 — St-Jean, CAN"
-//       sub="Full Stack Developer Intern"
-//       desc="Full-stack development on internal tools. Built features with Vue.js on the frontend and .NET on the backend. Integrated SignalR for real-time updates. Power Platform automation work."
-//       tags={["Vue.js", ".NET", "SignalR", "Power Platform", "C#"]}
-//     />
-
-//     <PaneCard
-//       name="Ericsson"
-//       meta="June 2024 - Aug 2024 — Ottawa, CAN"
-//       sub="DevOps Engineer Intern"
-//       desc="Monitoring and observability work across Kubernetes clusters. Built and maintained Jenkins pipelines. Grafana dashboard setup for infrastructure health tracking. Optimized Celery/Redis polling on Upstash to reduce idle command volume."
-//       tags={["Kubernetes", "Jenkins", "Grafana", "Redis", "Celery", "Upstash"]}
-//     />
-
-//   </Pane>
-// );
-
-// export default ExperiencePane;
