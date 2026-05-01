@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import { LuSun, LuMoon, LuLinkedin, LuGithub, LuMapPin } from "react-icons/lu";
@@ -5,6 +7,8 @@ import ProjectsPane from "../components/ProjectsPane";
 import EducationPane from "../components/EducationPane";
 import ExperiencePane from "../components/ExperiencePane";
 import TechStackFooter from "../components/TechStackFooter";
+import { InnerPane } from "../components/InnerPane";
+import { aboutData } from "../components/AboutInnerData";
 
 /* ── Ripple + magnetic corner effect on hover ── */
 const ClickableBox: React.FC<{
@@ -19,7 +23,6 @@ const ClickableBox: React.FC<{
   const [corner, setCorner] = useState({ x: 0, y: 0 });
   const [hovered, setHovered] = useState(false);
   const counterRef = React.useRef(0);
-
   const handleMouseEnter = () => setHovered(true);
   const handleMouseLeave = () => {
     setHovered(false);
@@ -86,6 +89,7 @@ const Landing: React.FC = () => {
   const [isEducationOpen, setIsEducationOpen] = useState(false);
   const [isExperienceOpen, setIsExperienceOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
 
   useEffect(() => {
     // Tiny delay so CSS transition kicks in after first paint
@@ -112,22 +116,23 @@ const Landing: React.FC = () => {
         }
 
         /* ── THEMES ── */
-        .dark {
-          --bg:            #000000;
-          --text:          #e6e6e6;
-          --border:        #1c1c1c;
-          --card:          #080808;
-          --hover-border:  #3a3a3a;
-          --ripple:        rgba(255,255,255,0.06);
-          --arrow-color:   #ffffff;
+.dark {
+  --bg:            #000000;
+  --text:          #e6e6e6;
+  --border:        #141414;
+  --card:          #050505;
+  --hover-border:  #2a2a2a;
+  --ripple:        rgba(255,255,255,0.05);
+  --arrow-color:   #ffffff;
 
-          /* Apple-grade glass */
-          --glass-bg:        rgba(255, 255, 255, 0.04);
-          --glass-border:    rgba(255, 255, 255, 0.10);
-          --glass-highlight: rgba(255, 255, 255, 0.07);
-          --glass-blur:      clamp(10px, 1.5vw, 20px);
-          --glass-shadow:    0 4px 24px rgba(0,0,0,0.55), 0 1px 0px rgba(255,255,255,0.06) inset;
-        }
+  /* Dark, subtle “black glass” (not gray fog) */
+  --glass-bg:        rgba(10, 10, 10, 0.28);   /* MUCH darker, less see-through */
+  --glass-border:    rgba(255, 255, 255, 0.06);
+  --glass-highlight: rgba(255, 255, 255, 0.05);
+  --glass-blur:      clamp(6px, 1vw, 10px);    /* less blur = less milkiness */
+  --glass-shadow:    0 6px 28px rgba(0,0,0,0.75),
+                     0 1px 0 rgba(255,255,255,0.04) inset;
+}
 
         .light {
           --bg:            #f0f0f0;
@@ -451,6 +456,48 @@ const Landing: React.FC = () => {
           z-index: 1;
         }
 
+        .about-image-box {
+          position: relative;
+          overflow: hidden;
+        }
+
+        .about-image-box::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+
+          background: rgba(0,0,0,0.55);
+          backdrop-filter: blur(6px);
+          -webkit-backdrop-filter: blur(6px);
+
+          transition: background 0.3s ease, backdrop-filter 0.3s ease;
+          z-index: 0;
+        }
+
+        .about-image-box img {
+          display: none;
+        }
+
+        /* grayscale image */
+        .about-image-box {
+          filter: grayscale(100%) contrast(1.05);
+          transition: filter 0.35s ease, transform 0.35s ease;
+        }
+
+        /* hover → color */
+        .about-image-box:hover {
+          filter: grayscale(0%) contrast(1.05);
+          transform: scale(1.02);
+        }
+
+        .about-image-box:hover::after {
+          background: rgba(0,0,0,0.35);
+        }
+
+        /* make label readable */
+        .about-image-box .box-label {
+          z-index: 2;
+        }
         .resume-box {
           display: flex;
           align-items: center;
@@ -596,9 +643,16 @@ const Landing: React.FC = () => {
 
           {/* LEFT */}
           <div className="left-col">
-            <div className="box about-box anim-about">
-              <span className="box-label">About</span>
-            </div>
+              <ClickableBox
+                label="About"
+                onClick={() => setAboutOpen(true)}
+                className="about-box about-image-box anim-about"
+                style={{
+                  backgroundImage: `url(${aboutData.image})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              />
             <div className="box anim-contact">
               <span className="box-label">Contact</span>
             </div>
@@ -677,7 +731,7 @@ const Landing: React.FC = () => {
                     >
                       <div className="location-pill">
                         <LuMapPin style={{ fontSize: "clamp(11px, 1.1vw, 15px)", flexShrink: 0 }} />
-                        <span>India</span>
+                        <span>Montreal, QC, Canada</span>
                       </div>
                     </div>
 
@@ -715,6 +769,11 @@ const Landing: React.FC = () => {
         <ExperiencePane
           isOpen={isExperienceOpen}
           onClose={() => setIsExperienceOpen(false)}
+          theme={theme}
+        />
+        <InnerPane
+          data={aboutOpen ? aboutData : null}
+          onClose={() => setAboutOpen(false)}
           theme={theme}
         />
       </div>
