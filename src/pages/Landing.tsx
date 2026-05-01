@@ -1,9 +1,116 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Header from "../components/Header";
 import { LuSun, LuMoon, LuLinkedin, LuGithub } from "react-icons/lu";
 import ProjectsPane from "../components/ProjectsPane";
 import EducationPane from "../components/EducationPane";
 import ExperiencePane from "../components/ExperiencePane";
+import TechStackFooter from "../components/TechStackFooter";
+
+/* ── Ripple + magnetic corner effect on hover ── */
+const ClickableBox: React.FC<{
+  label: string;
+  onClick: () => void;
+  className?: string;
+  style?: React.CSSProperties;
+}> = ({ label, onClick, className = "", style }) => {
+  const boxRef = useRef<HTMLDivElement>(null);
+  const [ripples, setRipples] = useState<{ id: number; x: number; y: number }[]>([]);
+  const [corner, setCorner] = useState({ x: 0, y: 0 });
+  const [hovered, setHovered] = useState(false);
+  const counterRef = useRef(0);
+
+  const handleMouseEnter = () => setHovered(true);
+
+  const handleMouseLeave = () => {
+    setHovered(false);
+    setCorner({ x: 0, y: 0 });
+  };
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!boxRef.current) return;
+    const rect = boxRef.current.getBoundingClientRect();
+    // magnetic pull toward nearest corner — arrow tracks cursor
+    const cx = e.clientX - rect.left;
+    const cy = e.clientY - rect.top;
+    // offset the arrow slightly toward cursor from its anchor (bottom-right)
+    const dx = (cx / rect.width - 1) * 10;
+    const dy = (cy / rect.height - 1) * 10;
+    setCorner({ x: dx, y: dy });
+  };
+
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!boxRef.current) return;
+    const rect = boxRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const id = counterRef.current++;
+    setRipples((prev) => [...prev, { id, x, y }]);
+    setTimeout(() => {
+      setRipples((prev) => prev.filter((r) => r.id !== id));
+    }, 700);
+    onClick();
+  };
+
+  return (
+    <div
+      ref={boxRef}
+      className={`box clickable ${className}`}
+      style={style}
+      onClick={handleClick}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onMouseMove={handleMouseMove}
+    >
+      <span className="box-label">{label}</span>
+
+      {/* ripple layer */}
+      {ripples.map((r) => (
+        <span
+          key={r.id}
+          className="box-ripple"
+          style={{ left: r.x, top: r.y }}
+        />
+      ))}
+
+      {/* animated arrow — magnetic + rotating */}
+      <span
+        className={`box-arrow ${hovered ? "box-arrow--visible" : ""}`}
+        style={{
+          transform: hovered
+            ? `translate(${corner.x}px, ${corner.y}px) rotate(0deg) scale(1)`
+            : `translate(6px, 6px) rotate(-55deg) scale(0.5)`,
+        }}
+      >
+        <svg
+          width="clamp(14px, 1.6vw, 22px)"
+          height="clamp(14px, 1.6vw, 22px)"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          {/* shaft */}
+          <line
+            x1="5" y1="19" x2="19" y2="5"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+          />
+          {/* arrowhead */}
+          <polyline
+            points="8,5 19,5 19,16"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </span>
+    </div>
+  );
+};
+
+/* ─────────────────────────────────────────────────────── */
 
 const Landing: React.FC = () => {
   const [theme, setTheme] = useState<"dark" | "light">("dark");
@@ -15,37 +122,36 @@ const Landing: React.FC = () => {
     <>
       <style>{`
         :root {
-          --header-h:  clamp(44px, 5vh, 60px);
+          --header-h:  clamp(48px, 5.5vh, 68px);
           --footer-h:  clamp(36px, 4vh, 52px);
           --gap:       clamp(5px, 0.6vw, 9px);
           --pad:       clamp(5px, 0.6vw, 9px);
           --radius:    clamp(10px, 1vw, 16px);
           --fs-ui:     clamp(10px, 0.85vw, 13px);
           --pad-box:   clamp(12px, 1.4vw, 22px);
-
-          --primary: #3bff6e;
-          --bg: #000000;
-          --text: #e6e6e6;
         }
 
         .dark {
-          --bg: #000000;
-          --text: #e6e6e6;
-          --primary: #3bff6e;
-          --border: #1a1a1a;
-          --card: #0a0a0a;
+          --bg:     #000000;
+          --text:   #e6e6e6;
+          --border: #1c1c1c;
+          --card:   #080808;
+          --hover-border: #3a3a3a;
+          --ripple: rgba(255,255,255,0.06);
+          --arrow-color: #ffffff;
         }
 
         .light {
-          --bg: #ffffff;
-          --text: #1a1a1a;
-          --primary: #3bff6e;
-          --border: #e5e5e5;
-          --card: #f9f9f9;
+          --bg:     #f5f5f5;
+          --text:   #111111;
+          --border: #dcdcdc;
+          --card:   #ffffff;
+          --hover-border: #aaaaaa;
+          --ripple: rgba(0,0,0,0.06);
+          --arrow-color: #111111;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
-
         html, body { font-family: 'Open Sauce Sans', sans-serif; }
 
         .page {
@@ -63,6 +169,7 @@ const Landing: React.FC = () => {
           display: grid;
           grid-template-columns: 22% 1fr;
           gap: var(--gap);
+          min-height: 0;
         }
 
         .left-col {
@@ -94,6 +201,7 @@ const Landing: React.FC = () => {
           flex: 1;
         }
 
+        /* ── BASE BOX ── */
         .box {
           background: var(--card);
           border: 1px solid var(--border);
@@ -101,19 +209,9 @@ const Landing: React.FC = () => {
           padding: var(--pad-box);
           display: flex;
           flex-direction: column;
-          transition: border-color 0.2s;
-        }
-
-        .box.clickable {
-          cursor: pointer;
-        }
-
-        .box.clickable:hover {
-          border-color: #3a3a3a;
-        }
-
-        .light .box.clickable:hover {
-          border-color: #c0c0c0;
+          position: relative;
+          overflow: hidden;
+          transition: border-color 0.25s ease;
         }
 
         .box-label {
@@ -121,8 +219,91 @@ const Landing: React.FC = () => {
           opacity: 0.3;
           text-transform: uppercase;
           letter-spacing: 0.1em;
+          position: relative;
+          z-index: 1;
         }
 
+        /* ── CLICKABLE BOX HOVER STATE ── */
+        .box.clickable {
+          cursor: pointer;
+        }
+
+        .box.clickable:hover {
+          border-color: var(--hover-border);
+        }
+
+        /* corner reveal gradient on hover */
+        .box.clickable::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          border-radius: var(--radius);
+          background: radial-gradient(
+            ellipse at 100% 100%,
+            rgba(255,255,255,0.035) 0%,
+            transparent 65%
+          );
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          pointer-events: none;
+        }
+        .dark .box.clickable:hover::after { opacity: 1; }
+        .light .box.clickable:hover::after {
+          background: radial-gradient(
+            ellipse at 100% 100%,
+            rgba(0,0,0,0.04) 0%,
+            transparent 65%
+          );
+          opacity: 1;
+        }
+
+        /* ── RIPPLE ── */
+        .box-ripple {
+          position: absolute;
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: var(--ripple);
+          transform: translate(-50%, -50%) scale(0);
+          animation: ripple-expand 0.65s cubic-bezier(0.22,1,0.36,1) forwards;
+          pointer-events: none;
+          z-index: 0;
+        }
+        @keyframes ripple-expand {
+          to {
+            transform: translate(-50%, -50%) scale(60);
+            opacity: 0;
+          }
+        }
+
+        /* ── ARROW ── */
+        .box-arrow {
+          position: absolute;
+          bottom: clamp(8px, 1.1vw, 16px);
+          right: clamp(8px, 1.1vw, 16px);
+          color: var(--arrow-color);
+          opacity: 0;
+          transition:
+            opacity 0.28s ease,
+            transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+          pointer-events: none;
+          z-index: 2;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: clamp(14px, 1.6vw, 22px);
+          height: clamp(14px, 1.6vw, 22px);
+        }
+        .box-arrow svg {
+          width: 100%;
+          height: 100%;
+        }
+
+        .box-arrow--visible {
+          opacity: 0.55;
+        }
+
+        /* ── LINKS COLUMN ── */
         .links-container {
           display: flex;
           flex-direction: column;
@@ -148,7 +329,7 @@ const Landing: React.FC = () => {
           background: var(--card);
           text-decoration: none;
           color: var(--text);
-          transition: 0.2s;
+          transition: background 0.22s, color 0.22s, border-color 0.22s;
           height: 40%;
           flex-shrink: 0;
           font-weight: 500;
@@ -157,9 +338,9 @@ const Landing: React.FC = () => {
         }
 
         .resume-box:hover {
-          background: var(--primary);
-          color: #000;
-          border-color: var(--primary);
+          background: var(--text);
+          color: var(--bg);
+          border-color: var(--text);
         }
 
         .links-grid {
@@ -184,7 +365,7 @@ const Landing: React.FC = () => {
           border-radius: var(--radius);
           background: var(--card);
           cursor: pointer;
-          transition: 0.2s;
+          transition: background 0.22s, color 0.22s, border-color 0.22s;
           color: var(--text);
           text-decoration: none;
           min-height: 0;
@@ -192,9 +373,9 @@ const Landing: React.FC = () => {
         }
 
         .link-item:hover {
-          background: var(--primary);
-          color: #000;
-          border-color: var(--primary);
+          background: var(--text);
+          color: var(--bg);
+          border-color: var(--text);
         }
 
         .theme-switcher {
@@ -217,22 +398,16 @@ const Landing: React.FC = () => {
           display: flex;
           align-items: center;
           justify-content: center;
-          transition: 0.2s;
+          transition: opacity 0.2s;
           flex: 1;
           font-size: clamp(14px, 2vw, 20px);
         }
+        .theme-btn:hover { opacity: 0.6; }
+        .theme-btn.active { opacity: 1; }
 
-        .theme-btn:hover { color: var(--primary); }
-        .theme-btn.active { color: var(--primary); }
-
-        .footer-bar {
-          height: var(--footer-h);
-          border-top: 1px solid var(--border);
-          display: flex;
-          align-items: center;
-          padding: 0 var(--pad);
-          font-size: var(--fs-ui);
-          opacity: 0.3;
+        /* invert icons when link-item hovered */
+        .link-item:hover .theme-btn {
+          color: var(--bg);
         }
       `}</style>
 
@@ -256,35 +431,22 @@ const Landing: React.FC = () => {
 
             {/* TOP ROW */}
             <div className="top-row">
-
-              {/* Education — clickable */}
-              <div
-                className="box clickable"
+              <ClickableBox
+                label="Education"
                 onClick={() => setIsEducationOpen(true)}
-              >
-                <span className="box-label">Education</span>
-              </div>
-
-              {/* Experience — clickable */}
-              <div
-                className="box clickable"
+              />
+              <ClickableBox
+                label="Experience"
                 onClick={() => setIsExperienceOpen(true)}
-              >
-                <span className="box-label">Experience</span>
-              </div>
-
+              />
             </div>
 
             {/* BOTTOM ROW */}
             <div className="bottom-row">
-
-              {/* Projects — clickable */}
-              <div
-                className="box clickable"
+              <ClickableBox
+                label="Projects"
                 onClick={() => setIsProjectsOpen(true)}
-              >
-                <span className="box-label">Projects</span>
-              </div>
+              />
 
               {/* Links */}
               <div className="links-container">
@@ -346,9 +508,7 @@ const Landing: React.FC = () => {
           </div>
         </div>
 
-        <div className="footer-bar">
-          stack animation · · ·
-        </div>
+        <TechStackFooter />
 
         {/* Panes */}
         <ProjectsPane
@@ -366,7 +526,6 @@ const Landing: React.FC = () => {
           onClose={() => setIsExperienceOpen(false)}
           theme={theme}
         />
-
       </div>
     </>
   );

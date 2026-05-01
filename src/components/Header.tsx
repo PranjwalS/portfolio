@@ -1,99 +1,206 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, useEffect } from "react";
-import { LuSun, LuMoon } from "react-icons/lu";
 
 interface HeaderProps {
-  student?: string;
-  role?: string;
   theme: string;
   setTheme: (theme: string) => void;
 }
 
-const Header: React.FC<HeaderProps> = ({
-  student = "UWaterloo Computer Science Honors (+ Hardware Specialization)",
-  role = "Full Stack Web/App + ML/AI Dev",
-  theme,
-  setTheme,
-}) => {
-  const [location, setLocation] = useState("Loading...");
-  const [weather, setWeather] = useState("0°C");
+const Header: React.FC<HeaderProps> = ({ theme }) => {
+  const [city, setCity] = useState("—");
+  const [weather, setWeather] = useState("—°C");
   const [time, setTime] = useState(
     new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
   );
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const iv = setInterval(() => {
       setTime(
-        new Date().toLocaleTimeString([], {
-          hour: "2-digit",
-          minute: "2-digit",
-        })
+        new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
       );
     }, 60000);
-    return () => clearInterval(interval);
+    return () => clearInterval(iv);
   }, []);
 
   useEffect(() => {
-    const fetchCityAndWeather = async () => {
+    (async () => {
       try {
-        const res = await fetch("https://ipapi.co/json/");
-        const data = await res.json();
-
-        const city = data.city;
-        setLocation(city);
-
-        const weatherRes = await fetch(
-          `https://api.open-meteo.com/v1/forecast?latitude=${data.latitude}&longitude=${data.longitude}&current_weather=true`
+        const r = await fetch("https://ipapi.co/json/");
+        const d = await r.json();
+        setCity(d.city);
+        const wr = await fetch(
+          `https://api.open-meteo.com/v1/forecast?latitude=${d.latitude}&longitude=${d.longitude}&current_weather=true`
         );
-        const weatherData = await weatherRes.json();
-
-        setWeather(
-          `${Math.round(weatherData.current_weather.temperature)}°C`
-        );
-      } catch (err) {
-        console.error("Error fetching location/weather:", err);
-        setLocation("Unknown");
+        const wd = await wr.json();
+        setWeather(`${Math.round(wd.current_weather.temperature)}°C`);
+      } catch {
+        setCity("Unknown");
         setWeather("N/A");
       }
-    };
-
-    fetchCityAndWeather();
+    })();
   }, []);
 
   return (
-    <header className="relative w-full h-20 bg-white dark:bg-zinc-900 text-black dark:text-white px-6 font-sans flex font-medium items-center justify-between">
-      <div className="flex items-center gap-28">
-        <span>{student}</span>
-        <span>{role}</span>
-      </div>
+    <>
+      <style>{`
+        .site-header {
+          width: 100%;
+          height: var(--header-h);
+          background: var(--bg);
+          border-bottom: 1px solid rgba(255,255,255,0.06);
+          display: grid;
+          grid-template-columns: 1fr auto 1fr;
+          align-items: center;
+          padding: 0 clamp(14px, 2vw, 32px);
+          position: relative;
+          overflow: hidden;
+          flex-shrink: 0;
+        }
 
-      <div className="flex items-center gap-6">
-        <span>
-          {location} ⋅ {time} ⋅ {weather}
-        </span>
+        /* subtle noise grain overlay */
+        .site-header::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+          opacity: 0.4;
+          pointer-events: none;
+        }
 
-        <div className="flex items-center">
-          <div className="bg-white border dark:bg-black p-2 rounded-xl flex gap-x-2">
-            <button
-              onClick={() => setTheme("light")}
-              className={`bg-transparent p-2 hover:bg-zinc-200 dark:hover:bg-zinc-100/10 rounded-lg text-black dark:text-white ${
-                theme === "light" ? "bg-zinc-300 dark:bg-zinc-600" : ""
-              }`}
-            >
-              <LuSun />
-            </button>
+        /* slow horizontal light sweep */
+        .site-header::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(255,255,255,0.025) 50%,
+            transparent 100%
+          );
+          background-size: 200% 100%;
+          animation: hdr-sweep 8s ease-in-out infinite;
+          pointer-events: none;
+        }
+        @keyframes hdr-sweep {
+          0%   { background-position: -200% 0; }
+          100% { background-position:  200% 0; }
+        }
 
-            <button
-              onClick={() => setTheme("dark")}
-              className={`bg-transparent p-2 hover:bg-zinc-200 dark:hover:bg-zinc-100/10 rounded-lg text-black dark:text-white ${
-                theme === "dark" ? "bg-zinc-300 dark:bg-zinc-600" : ""
-              }`}
-            >
-              <LuMoon />
-            </button>
-          </div>
+        /* ─── LEFT ─── */
+        .h-left {
+          display: flex;
+          flex-direction: column;
+          gap: clamp(1px, 0.25vh, 3px);
+          position: relative;
+          z-index: 1;
+        }
+        .h-city {
+          font-size: clamp(9px, 0.78vw, 12px);
+          color: var(--text);
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          font-weight: 600;
+          opacity: 0.85;
+        }
+        .h-timewx {
+          font-size: clamp(8px, 0.65vw, 10px);
+          color: var(--text);
+          opacity: 0.3;
+          letter-spacing: 0.08em;
+          font-weight: 400;
+        }
+
+        /* ─── CENTER ─── */
+        .h-center {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          z-index: 1;
+        }
+        .h-name {
+          font-size: clamp(13px, 1.4vw, 20px);
+          color: var(--text);
+          letter-spacing: clamp(0.25em, 0.5vw, 0.5em);
+          text-transform: uppercase;
+          font-weight: 800;
+          cursor: default;
+          position: relative;
+          padding-bottom: 3px;
+          user-select: none;
+        }
+        /* glitch underline that splits outward on hover */
+        .h-name::before,
+        .h-name::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          height: 1px;
+          background: var(--text);
+          opacity: 0;
+          transition:
+            width 0.4s cubic-bezier(0.16,1,0.3,1),
+            left 0.4s cubic-bezier(0.16,1,0.3,1),
+            right 0.4s cubic-bezier(0.16,1,0.3,1),
+            opacity 0.2s;
+          width: 0%;
+        }
+        .h-name::before { left: 50%; }
+        .h-name::after  { right: 50%; }
+        .h-name:hover::before,
+        .h-name:hover::after {
+          opacity: 0.5;
+          width: 50%;
+        }
+        .h-name:hover::before { left: 50%; }
+        .h-name:hover::after  { right: 50%; }
+
+        /* ─── RIGHT ─── */
+        .h-right {
+          display: flex;
+          flex-direction: column;
+          gap: clamp(1px, 0.25vh, 3px);
+          align-items: flex-end;
+          position: relative;
+          z-index: 1;
+        }
+        .h-uni {
+          font-size: clamp(8px, 0.7vw, 11px);
+          color: var(--text);
+          opacity: 0.45;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          text-align: right;
+          font-weight: 500;
+        }
+        .h-role {
+          font-size: clamp(7px, 0.62vw, 10px);
+          color: var(--text);
+          opacity: 0.25;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          text-align: right;
+          font-weight: 400;
+        }
+      `}</style>
+
+      <header className="site-header">
+        <div className="h-left">
+          <span className="h-city">{city}</span>
+          <span className="h-timewx">{time} · {weather}</span>
         </div>
-      </div>
-    </header>
+
+        <div className="h-center">
+          <span className="h-name">Pranjwal Singh</span>
+        </div>
+
+        <div className="h-right">
+          <span className="h-uni">UWaterloo CS · Hardware Spec</span>
+          <span className="h-role">Full Stack · Web / App · AI / ML</span>
+        </div>
+      </header>
+    </>
   );
 };
 
