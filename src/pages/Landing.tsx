@@ -467,8 +467,8 @@ const Landing: React.FC = () => {
           inset: 0;
 
           background: rgba(0,0,0,0.55);
-          backdrop-filter: blur(6px);
-          -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(1px);
+          -webkit-backdrop-filter: blur(1px);
 
           transition: background 0.3s ease, backdrop-filter 0.3s ease;
           z-index: 0;
@@ -648,7 +648,7 @@ const Landing: React.FC = () => {
                 onClick={() => setAboutOpen(true)}
                 className="about-box about-image-box anim-about"
                 style={{
-                  backgroundImage: `url(${aboutData.image})`,
+                  backgroundImage: `url("/assets/me.png")`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}

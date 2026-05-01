@@ -110,14 +110,17 @@ export const Pane: React.FC<PaneProps> = ({ open, onClose, title, theme, childre
         }
         .p-tag {
           font-family: monospace;
-          font-size: clamp(7px, 0.62vw, 9px);
-          padding: 0.22em 0.65em;
+          font-size: clamp(8px, 0.8vw, 10px);
+          padding: 0.35em 0.75em;
           border-radius: 999px;
           background: ${isDark ? "#111" : "#f2f2f2"};
           border: 1px solid ${isDark ? "#1e1e1e" : "#e0e0e0"};
           color: ${text};
-          opacity: 0.6;
-          letter-spacing: 0.03em;
+
+          opacity: 0.85;
+          letter-spacing: 0.02em;
+
+          transition: transform 0.15s ease, opacity 0.15s ease;
         }
         .p-links {
           display: flex; gap: 0.6rem; margin-top: 0.2rem;

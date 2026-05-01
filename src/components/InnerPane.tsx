@@ -280,7 +280,7 @@ export const InnerPane: React.FC<InnerPaneProps> = ({ data, onClose, theme }) =>
                     <p style={{
                       margin: "0 0 0.45rem",
                       fontFamily: "monospace",
-                      fontSize: "clamp(7px, 0.65vw, 9px)",
+                      fontSize: "clamp(7px, 0.8vw, 9px)",
                       textTransform: "uppercase",
                       letterSpacing: "0.13em",
                       opacity: 0.28,
@@ -297,7 +297,7 @@ export const InnerPane: React.FC<InnerPaneProps> = ({ data, onClose, theme }) =>
                           transition={{ delay: 0.22 + i * 0.025, duration: 0.18 }}
                           style={{
                             fontFamily: "monospace",
-                            fontSize: "clamp(7px, 0.62vw, 9px)",
+                            fontSize: "clamp(8px, 0.8vw, 10px)",
                             padding: "0.22em 0.6em",
                             borderRadius: "999px",
                             background: tagBg,

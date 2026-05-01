@@ -5,7 +5,7 @@ export const aboutData: InnerPaneData = {
   subtitle: "Builder · Systems · AI",
   timeframe: "Montreal, QC",
 
-  backgroundImage="/images/me.jpg",
+  image:"/assets/eye.png",
 
   description:
     "I build systems that actually get used. From AI job aggregation pipelines to mobile OS-level behavior redesign, my focus is on high-leverage software. I like things that scale, break, and force iteration.",
