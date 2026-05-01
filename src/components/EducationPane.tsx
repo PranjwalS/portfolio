@@ -24,7 +24,7 @@ const EducationPane: React.FC<EducationPaneProps> = ({ isOpen, onClose, theme })
         title: "University of Waterloo",
         subtitle: "BCS Honours · Digital Hardware Specialization",
         timeframe: "2024 – 2029",
-        image: "https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?w=800&auto=format&fit=crop",
+        image: "/assets/dc.avif",
         description:
           "Honours Bachelor of Computer Science with a Digital Hardware specialization. Co-operative education program — alternating academic and work terms. Targeting Fall 2026 co-op. Courses completed span algorithms and data structures, combinatorics and graph theory, logic and computability, statistics, linear algebra, and hardware design.",
         tags: [
@@ -52,7 +52,7 @@ const EducationPane: React.FC<EducationPaneProps> = ({ isOpen, onClose, theme })
         title: "Dawson College",
         subtitle: "DEC — Computer Science & Mathematics",
         timeframe: "2023 – 2024",
-        image: "https://images.unsplash.com/photo-1562774053-701939374585?w=800&auto=format&fit=crop",
+        image: "/assets/dawson.jpg",
         description:
           "Completed one year of the DEC (Diplôme d'études collégiales) program in Computer Science and Mathematics at Dawson College, Montreal. Graduated with a 95 average before transferring to the University of Waterloo for the BCS Honours program.",
         tags: ["Computer Science", "Mathematics", "Calculus", "Linear Algebra", "Data Structures"],
@@ -70,7 +70,7 @@ const EducationPane: React.FC<EducationPaneProps> = ({ isOpen, onClose, theme })
         title: "École Secondaire des Sources",
         subtitle: "International Baccalaureate",
         timeframe: "2018 – 2023",
-        image: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&auto=format&fit=crop",
+        image: "/assets/esds.jpg",
         description:
           "Completed the full International Baccalaureate program over 5 years at École Secondaire des Sources in Dollard-des-Ormeaux, Montreal. Graduated with a 96 average.",
         tags: ["International Baccalaureate", "Mathematics", "Sciences", "French", "Theory of Knowledge"],

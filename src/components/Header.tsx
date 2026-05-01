@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 
 interface HeaderProps {
   theme: string;
-  setTheme: (theme: string) => void;
+  setTheme: React.Dispatch<React.SetStateAction<"light" | "dark">>;
 }
 
 const Header: React.FC<HeaderProps> = ({ theme }) => {
