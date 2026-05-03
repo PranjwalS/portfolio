@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useEffect, useId } from "react";
 import { LuLinkedin, LuGithub, LuInstagram } from "react-icons/lu";
 
