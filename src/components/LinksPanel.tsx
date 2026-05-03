@@ -603,7 +603,7 @@ const LinksPanel: React.FC<LinksPanelProps> = ({ theme, setTheme }) => {
 
         {/* TOP 30%: linkedin | github | bb8 | placeholder */}
         <div className="lp-row-top">
-          <a href="https://linkedin.com/in/pranjwal-singh-01979b242/" className="lp-cell lp-social anim-lp-li" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.linkedin.com/in/pranjwal-s-01979b242/" className="lp-cell lp-social anim-lp-li" target="_blank" rel="noopener noreferrer">
             <LuLinkedin />
           </a>
           <a href={`https://github.com/${GITHUB_USER}`} className="lp-cell lp-social anim-lp-gh" target="_blank" rel="noopener noreferrer">
@@ -648,7 +648,7 @@ const LinksPanel: React.FC<LinksPanelProps> = ({ theme, setTheme }) => {
 
         {/* BOT 30%: resume | map */}
         <div className="lp-row-bot">
-          <a href="/resume.pdf" download className="lp-cell lp-resume anim-lp-cv">
+          <a href="/Pranjwal_Singh_CV__old.pdf" download className="lp-cell lp-resume anim-lp-cv">
             <span>Download CV</span>
             <span className="lp-resume-sub">PDF · Latest</span>
           </a>

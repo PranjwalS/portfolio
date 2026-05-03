@@ -196,7 +196,7 @@ const Header: React.FC<HeaderProps> = ({ theme }) => {
         </div>
 
         <div className="h-right">
-          <span className="h-uni">UWaterloo CS · Hardware Spec</span>
+          <span className="h-uni">UWaterloo Computer Science · Hardware Spec</span>
           <span className="h-role">Full Stack · Web / App · AI / ML</span>
         </div>
       </header>
