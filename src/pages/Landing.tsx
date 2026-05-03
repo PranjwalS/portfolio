@@ -8,7 +8,7 @@ import ExperiencePane from "../components/ExperiencePane";
 import TechStackFooter from "../components/TechStackFooter";
 import { InnerPane } from "../components/InnerPane";
 import { aboutData } from "../components/AboutInnerData";
-import LinksPanel from "../components/Linkspanel";
+import LinksPanel from "../components/LinksPanel";
 
 /* ── Ripple + magnetic corner arrow ── */
 const ClickableBox: React.FC<{
