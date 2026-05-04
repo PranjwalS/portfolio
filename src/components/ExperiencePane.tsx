@@ -16,20 +16,19 @@ const ExperiencePane: React.FC<ExperiencePaneProps> = ({ isOpen, onClose, theme 
     <PaneSectionTitle>Work</PaneSectionTitle>
 
     <PaneCard
-      name="EdBridges Inc. · Askly.today"
-      meta="Jun – Aug 2026"
-      sub="AI Software Engineer"
-      desc="RAG pipelines, LLM response quality, Python backend systems, prompt engineering."
-      tags={["Python", "RAG", "LangChain", "Pinecone", "MongoDB"]}
+      name="Edbridges Inc. · Askly.Today"
+      meta="Jun - Aug 2026"
+      sub="Software Engineer Intern"
+      desc="RAG pipelines, prompt engineering, and LLM backend systems using Python, MongoDB, Pinecone, LangChain, and OpenAI API."
+      tags={["Python", "RAG", "LangChain", "OpenAI API", "Pinecone", "MongoDB", "LLM"]}
       inner={{
-        title: "EdBridges Inc.",
-        subtitle: "AI Software Engineer — Askly.today",
-        timeframe: "Jun – Aug 2026",
-        image: "/assets/edbridge.jpg",
+        title: "Edbridges Inc. · Askly.Today",
+        subtitle: "Software Engineer Intern",
+        timeframe: "Jun - Aug 2026",
+        image: "assets/edbridge.jpg",
         description:
-          "Working on Askly.today, an AI-powered learning assistant. Core work involves designing and improving RAG pipelines — retrieval, ranking, and chunking architecture — and systematically improving LLM response quality through prompt engineering and evaluation tooling. Also building Python backend systems and QA infrastructure to measure answer accuracy.",
-        tags: ["Python", "RAG", "LangChain", "Pinecone", "MongoDB", "Prompt Engineering", "FastAPI"],
-        liveUrl: "https://askly.today",
+          "Built and improved RAG pipelines and prompt engineering workflows on an AI-powered educational platform, using Python, MongoDB, and Pinecone Vector DB to enhance LLM output quality. Developed backend LLM workflow systems using LangChain and OpenAI API, and built internal tooling for QA testing and model evaluation.",
+        tags: ["Python", "RAG", "LangChain", "OpenAI API", "Pinecone", "MongoDB", "Prompt Engineering"],
       }}
     />
 
