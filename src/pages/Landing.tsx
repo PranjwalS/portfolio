@@ -279,9 +279,55 @@ const Landing: React.FC = () => {
               className="about-box about-image-box anim-about"
               style={{ backgroundImage: `url("/assets/me.png")`, backgroundSize: "cover", backgroundPosition: "center" }}
             />
-            <div className="box anim-contact">
-              <span className="box-label">Contact</span>
-            </div>
+{/* Contact boxes */}
+<div style={{ display: "flex", gap: "var(--gap)", flex: "0 0 auto" }}>
+  {[
+    { label: "Phone", value: "438 773 4010", icon: (
+      <svg width="clamp(11px,1vw,15px)" height="clamp(11px,1vw,15px)" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.11 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/>
+      </svg>
+    )},
+    { label: "Email", value: "singhpranjwal\n@gmail.com", icon: (
+      <svg width="clamp(11px,1vw,15px)" height="clamp(11px,1vw,15px)" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="4" width="20" height="16" rx="2"/>
+        <path d="M2 7l10 7 10-7"/>
+      </svg>
+    )},
+  ].map(({ label, value, icon }) => {
+    const [copied, setCopied] = React.useState(false);
+    const handleCopy = () => {
+      navigator.clipboard.writeText(value.replace(/\n/g, ""));
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1800);
+    };
+    return (
+      <div
+        key={label}
+        className="box anim-contact clickable"
+        onClick={handleCopy}
+        style={{ flex: 1, cursor: "copy", justifyContent: "center", gap: "clamp(4px,0.4vw,7px)" }}
+        title={`Copy ${label.toLowerCase()}`}
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: "clamp(5px,0.5vw,8px)", opacity: copied ? 0 : 1, transition: "opacity 0.2s" }}>
+          <span style={{ opacity: 0.4, display: "flex", alignItems: "center" }}>{icon}</span>
+          <span className="box-label" style={{ textTransform: "none", letterSpacing: "0.02em", opacity: 0.55, fontSize: "clamp(9px,0.78vw,12px)" }}>
+            {value}
+          </span>
+        </div>
+        {copied && (
+          <div style={{
+            position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center",
+            animation: "box-enter 0.3s cubic-bezier(0.34,1.56,0.64,1) forwards"
+          }}>
+            <svg width="clamp(14px,1.4vw,20px)" height="clamp(14px,1.4vw,20px)" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.7 }}>
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
+        )}
+      </div>
+    );
+  })}
+</div>
           </div>
 
           <div className="right-grid">
