@@ -25,7 +25,7 @@ const ExperiencePane: React.FC<ExperiencePaneProps> = ({ isOpen, onClose, theme 
         title: "Edbridges Inc. · Askly.Today",
         subtitle: "Software Engineer Intern",
         timeframe: "Jun - Aug 2026  ·  Remote",
-        image: "assets/edbridge.jpg",
+        image: "assets/edbridges.jpg",
         description:
           "Built and improved RAG pipelines and prompt engineering workflows on an AI-powered educational platform, using Python, MongoDB, and Pinecone Vector DB to enhance LLM output quality. Developed backend LLM workflow systems using LangChain and OpenAI API, and built internal tooling for QA testing and model evaluation.",
         tags: ["Python", "RAG", "LangChain", "OpenAI API", "Pinecone", "MongoDB", "Prompt Engineering"],
