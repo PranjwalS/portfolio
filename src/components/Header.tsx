@@ -7,8 +7,8 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ theme }) => {
-  const [city, setCity] = useState("—");
-  const [weather, setWeather] = useState("—°C");
+  const [city,    setCity]    = useState<string | null>(null);
+  const [weather, setWeather] = useState<string | null>(null);
   const [time, setTime] = useState(
     new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
   );
@@ -24,21 +24,39 @@ const Header: React.FC<HeaderProps> = ({ theme }) => {
 
   useEffect(() => {
     (async () => {
+      // Location fetch — independent, hide if it fails
+      let lat: number | null = null;
+      let lon: number | null = null;
       try {
         const r = await fetch("https://ipapi.co/json/");
         const d = await r.json();
-        setCity(d.city);
-        const wr = await fetch(
-          `https://api.open-meteo.com/v1/forecast?latitude=${d.latitude}&longitude=${d.longitude}&current_weather=true`
-        );
-        const wd = await wr.json();
-        setWeather(`${Math.round(wd.current_weather.temperature)}°C`);
+        if (d?.city) setCity(d.city);
+        if (d?.latitude)  lat = d.latitude;
+        if (d?.longitude) lon = d.longitude;
       } catch {
-        setCity("Unknown");
-        setWeather("N/A");
+        // city stays null → hidden
+      }
+
+      // Weather fetch — independent, hide if it fails or if no coords
+      if (lat !== null && lon !== null) {
+        try {
+          const wr = await fetch(
+            `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`
+          );
+          const wd = await wr.json();
+          if (wd?.current_weather?.temperature != null) {
+            setWeather(`${Math.round(wd.current_weather.temperature)}°C`);
+          }
+        } catch {
+          // weather stays null → hidden
+        }
       }
     })();
   }, []);
+
+  // Build the subtitle line from only what resolved
+  const subtitleParts = [time, weather].filter(Boolean).join(" · ");
+  const showLeft = city || subtitleParts;
 
   return (
     <>
@@ -57,7 +75,6 @@ const Header: React.FC<HeaderProps> = ({ theme }) => {
           flex-shrink: 0;
         }
 
-        /* subtle noise grain overlay */
         .site-header::before {
           content: '';
           position: absolute;
@@ -67,7 +84,6 @@ const Header: React.FC<HeaderProps> = ({ theme }) => {
           pointer-events: none;
         }
 
-        /* slow horizontal light sweep */
         .site-header::after {
           content: '';
           position: absolute;
@@ -87,7 +103,6 @@ const Header: React.FC<HeaderProps> = ({ theme }) => {
           100% { background-position:  200% 0; }
         }
 
-        /* ─── LEFT ─── */
         .h-left {
           display: flex;
           flex-direction: column;
@@ -111,7 +126,6 @@ const Header: React.FC<HeaderProps> = ({ theme }) => {
           font-weight: 400;
         }
 
-        /* ─── CENTER ─── */
         .h-center {
           display: flex;
           align-items: center;
@@ -130,7 +144,6 @@ const Header: React.FC<HeaderProps> = ({ theme }) => {
           padding-bottom: 3px;
           user-select: none;
         }
-        /* glitch underline that splits outward on hover */
         .h-name::before,
         .h-name::after {
           content: '';
@@ -156,7 +169,6 @@ const Header: React.FC<HeaderProps> = ({ theme }) => {
         .h-name:hover::before { left: 50%; }
         .h-name:hover::after  { right: 50%; }
 
-        /* ─── RIGHT ─── */
         .h-right {
           display: flex;
           flex-direction: column;
@@ -187,8 +199,8 @@ const Header: React.FC<HeaderProps> = ({ theme }) => {
 
       <header className="site-header">
         <div className="h-left">
-          <span className="h-city">{city}</span>
-          <span className="h-timewx">{time} · {weather}</span>
+          {city         && <span className="h-city">{city}</span>}
+          {subtitleParts && <span className="h-timewx">{subtitleParts}</span>}
         </div>
 
         <div className="h-center">

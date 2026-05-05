@@ -73,10 +73,26 @@ const ClickableBox: React.FC<{
   );
 };
 
+/* ── True JS media query hook — drives conditional mounting, not just CSS ── */
+const useIsMobile = () => {
+  const query = "(max-width: 500px) and (orientation: portrait)";
+  const [isMobile, setIsMobile] = React.useState(() =>
+    typeof window !== "undefined" ? window.matchMedia(query).matches : false
+  );
+  React.useEffect(() => {
+    const mql = window.matchMedia(query);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mql.addEventListener("change", handler);
+    return () => mql.removeEventListener("change", handler);
+  }, []);
+  return isMobile;
+};
+
 /* ───────────────────────────────────── */
 
 const Landing: React.FC = () => {
   const [theme, setTheme] = useState<"dark" | "light">("dark");
+  const isMobile = useIsMobile();
   const [isProjectsOpen,   setIsProjectsOpen]   = useState(false);
   const [isEducationOpen,  setIsEducationOpen]   = useState(false);
   const [isExperienceOpen, setIsExperienceOpen]  = useState(false);
@@ -309,6 +325,8 @@ const Landing: React.FC = () => {
 
           /* About image takes majority of left col */
           .about-box { flex: 1 1 0; min-height: 0; }
+          /* Zoom out the photo so more of the subject is visible on small screen */
+          .about-image-box { background-size: 150% !important; background-position: center center !important; background-repeat: no-repeat !important; }
 
           /* Contact row stays as a flex row, side by side within left col */
           .mob-contact-row {
@@ -336,15 +354,12 @@ const Landing: React.FC = () => {
             - Commit strip: medium prominence                                        → flex 13
             - CV+Map strip: bottom bar, paired                                       → flex 9
           */
-          .mob-education  { flex: 10 10 0; min-height: 0; }
-          .mob-experience { flex: 14 14 0; min-height: 0; }
-          .mob-projects   { flex: 14 14 0; min-height: 0; }
-          .mob-links-top  { flex: 8 8 0;   min-height: 0; }
-          .mob-commit     { flex: 13 13 0; min-height: 0; }
-          .mob-bot-strip  { flex: 9 9 0;   min-height: 0; display: flex; flex-direction: row; gap: var(--gap); }
-
-          /* Hide the desktop right-grid structure entirely on mobile */
-          .right-grid  { display: none !important; }
+          .mob-education  { flex: 12 12 0; min-height: 0; }
+          .mob-experience { flex: 16 16 0; min-height: 0; }
+          .mob-projects   { flex: 16 16 0; min-height: 0; }
+          .mob-links-top  { flex: 7 7 0;   min-height: 0; }
+          .mob-commit     { flex: 11 11 0; min-height: 0; }
+          .mob-bot-strip  { flex: 8 8 0;   min-height: 0; display: flex; flex-direction: row; gap: var(--gap); }
 
           /* box-arrow sizing on mobile */
           .box-arrow,
@@ -427,26 +442,27 @@ const Landing: React.FC = () => {
             </div>
           </div>
 
-          {/* ── DESKTOP RIGHT GRID (hidden on mobile via CSS) ── */}
-          <div className="right-grid">
-            <div className="top-row">
-              <ClickableBox label="Education"  onClick={() => setIsEducationOpen(true)}  animationDelay="0.10s" />
-              <ClickableBox label="Experience" onClick={() => setIsExperienceOpen(true)} animationDelay="0.17s" />
+          {/* ── RIGHT COLUMN — JS-conditional, only one branch mounts at a time ── */}
+          {!isMobile ? (
+            <div className="right-grid">
+              <div className="top-row">
+                <ClickableBox label="Education"  onClick={() => setIsEducationOpen(true)}  animationDelay="0.10s" />
+                <ClickableBox label="Experience" onClick={() => setIsExperienceOpen(true)} animationDelay="0.17s" />
+              </div>
+              <div className="bottom-row">
+                <ClickableBox label="Projects" onClick={() => setIsProjectsOpen(true)} animationDelay="0.21s" />
+                <LinksPanel theme={theme} setTheme={setTheme} />
+              </div>
             </div>
-            <div className="bottom-row">
-              <ClickableBox label="Projects" onClick={() => setIsProjectsOpen(true)} animationDelay="0.21s" />
-              <LinksPanel theme={theme} setTheme={setTheme} />
-            </div>
-          </div>
-
-          {/* ── MOBILE RIGHT STACK (hidden on desktop via CSS, shown only on mobile) ── */}
-          <MobileRightStack
-            theme={theme}
-            setTheme={setTheme}
-            onEducation={() => setIsEducationOpen(true)}
-            onExperience={() => setIsExperienceOpen(true)}
-            onProjects={() => setIsProjectsOpen(true)}
-          />
+          ) : (
+            <MobileRightStack
+              theme={theme}
+              setTheme={setTheme}
+              onEducation={() => setIsEducationOpen(true)}
+              onExperience={() => setIsExperienceOpen(true)}
+              onProjects={() => setIsProjectsOpen(true)}
+            />
+          )}
         </div>
 
         <TechStackFooter theme={theme}/>
@@ -743,12 +759,6 @@ const MobileRightStack: React.FC<MobileRightStackProps> = ({
   return (
     <>
       <style>{`
-        /* Only visible on mobile portrait */
-        .mob-right-stack { display: none; }
-        @media (max-width: 500px) and (orientation: portrait) {
-          .mob-right-stack { display: flex; }
-        }
-
         /* Social icons for mobile strip */
         .mob-social-icon {
           flex: 1; display: flex; align-items: center; justify-content: center;
