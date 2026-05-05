@@ -602,13 +602,13 @@ const LinksPanel: React.FC<LinksPanelProps> = ({ theme, setTheme }) => {
             commit gets the most room (it has the most content).
           */
           .lp-row-top {
-            flex: 22 22 0; /* social icons — compact strip */
+            flex: 18 18 0; /* social icons — tight strip */
           }
           .lp-row-mid {
-            flex: 42 42 0; /* commit strip — needs most room */
+            flex: 44 44 0; /* commit strip — most content, gets most room */
           }
           .lp-row-bot {
-            flex: 36 36 0; /* resume + map — generous but not huge */
+            flex: 38 38 0; /* resume + map */
           }
 
           /* Social icons: shrink font, keep them square */
