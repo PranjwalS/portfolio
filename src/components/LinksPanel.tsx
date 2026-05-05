@@ -629,8 +629,8 @@ const LinksPanel: React.FC<LinksPanelProps> = ({ theme, setTheme }) => {
             <>
               <div className="lp-commit-eyebrow">
                 <span className="lp-pulse-dot" />
-                <span className="lp-eyebrow-label">Currently working</span>
-                <span className="lp-eyebrow-date">{commit.date}</span>
+                <span className="lp-eyebrow-label">Currently working on:</span>
+                <span className="lp-eyebrow-date">Committed on {commit.date}</span>
               </div>
               <div className="lp-commit-repo-row">
                 <span className="lp-repo-tag">Repo</span>
@@ -648,7 +648,7 @@ const LinksPanel: React.FC<LinksPanelProps> = ({ theme, setTheme }) => {
 
         {/* BOT 30%: resume | map */}
         <div className="lp-row-bot">
-          <a href="/Pranjwal_Singh_CV__old.pdf" download className="lp-cell lp-resume anim-lp-cv">
+          <a href="/Pranjwal_Singh_CV_Fall2026.pdf" download className="lp-cell lp-resume anim-lp-cv">
             <span>Download CV</span>
             <span className="lp-resume-sub">PDF · Latest</span>
           </a>
