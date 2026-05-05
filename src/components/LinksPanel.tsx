@@ -15,7 +15,8 @@ interface CommitData {
 }
 
 const GITHUB_USER = "Pranjwals";
-/* ─── BB8 Toggle — scales via font-size to fill its container ── */
+
+/* ─── BB8 Toggle ── */
 const BB8Toggle: React.FC<{
   theme: "dark" | "light";
   setTheme: (t: "dark" | "light") => void;
@@ -303,7 +304,7 @@ const BB8Toggle: React.FC<{
 };
 
 
-/* ─── Leaflet Map — clean, no attribution ───────────────────────────── */
+/* ─── Leaflet Map ─────────────────────────────────────────────────── */
 const LeafletMap: React.FC<{ theme: "dark" | "light" }> = ({ theme }) => {
   const mapRef = React.useRef<HTMLDivElement>(null);
   const leafletRef = React.useRef<any>(null);
@@ -311,7 +312,6 @@ const LeafletMap: React.FC<{ theme: "dark" | "light" }> = ({ theme }) => {
   React.useEffect(() => {
     if (!mapRef.current) return;
 
-    // Load Leaflet CSS
     if (!document.getElementById("leaflet-css")) {
       const link = document.createElement("link");
       link.id = "leaflet-css";
@@ -320,7 +320,6 @@ const LeafletMap: React.FC<{ theme: "dark" | "light" }> = ({ theme }) => {
       document.head.appendChild(link);
     }
 
-    // Load Leaflet JS then init
     const initMap = () => {
       const L = (window as any).L;
       if (!L || !mapRef.current || leafletRef.current) return;
@@ -344,7 +343,6 @@ const LeafletMap: React.FC<{ theme: "dark" | "light" }> = ({ theme }) => {
 
       L.tileLayer(tileUrl, { maxZoom: 19 }).addTo(map);
 
-      // Green pulse pin
       const pinIcon = L.divIcon({
         className: "lp-map-pin-label",
         html: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">' +
@@ -379,7 +377,6 @@ const LeafletMap: React.FC<{ theme: "dark" | "light" }> = ({ theme }) => {
     };
   }, []);
 
-  // Swap tiles on theme change
   React.useEffect(() => {
     const L = (window as any).L;
     const map = leafletRef.current;
@@ -427,11 +424,7 @@ const LinksPanel: React.FC<LinksPanelProps> = ({ theme, setTheme }) => {
   return (
     <>
       <style>{`
-        /*
-          height:100% + min-height:0 + overflow:hidden on the panel AND every
-          row is what keeps this from pushing past its flex allotment.
-          This is the key fix — all three must be present on each level.
-        */
+        /* ─── LinksPanel base (desktop) ─── */
         .links-panel {
           height: 100%;
           min-height: 0;
@@ -441,7 +434,7 @@ const LinksPanel: React.FC<LinksPanelProps> = ({ theme, setTheme }) => {
           gap: var(--gap);
         }
 
-        /* 30 / 40 / 30 vertical split — overflow:hidden + min-height:0 are critical */
+        /* Desktop: 30 / 40 / 30 split */
         .lp-row-top { flex: 30 30 0; display: flex; gap: var(--gap); min-height: 0; overflow: hidden; }
         .lp-row-mid { flex: 40 40 0; min-height: 0; overflow: hidden; }
         .lp-row-bot { flex: 30 30 0; display: flex; gap: var(--gap); min-height: 0; overflow: hidden; }
@@ -476,8 +469,7 @@ const LinksPanel: React.FC<LinksPanelProps> = ({ theme, setTheme }) => {
         .lp-social:hover { background: var(--text) !important; color: var(--bg); border-color: var(--text) !important; box-shadow: none !important; }
         .lp-social:hover::before { display: none; }
 
-
-        /* bb8 cell — transparent, no border, clipped to row height */
+        /* bb8 cell */
         .lp-bb8 {
           flex: 1.4; padding: 0; cursor: pointer;
           background: transparent !important;
@@ -570,11 +562,9 @@ const LinksPanel: React.FC<LinksPanelProps> = ({ theme, setTheme }) => {
         .lp-map-leaf {
           width: 100%; height: 100%; min-height: 0;
         }
-        /* hide all leaflet attribution/watermark */
         .lp-map-leaf .leaflet-control-attribution,
         .lp-map-leaf .leaflet-control-zoom,
         .lp-map-leaf .leaflet-control-container { display: none !important; }
-        /* pin label */
         .lp-map-pin-label {
           background: transparent !important;
           border: none !important;
@@ -589,7 +579,7 @@ const LinksPanel: React.FC<LinksPanelProps> = ({ theme, setTheme }) => {
           pointer-events: none;
         }
 
-        /* stagger */
+        /* animation stagger */
         .anim-lp-li  { animation-delay: 0.28s; }
         .anim-lp-gh  { animation-delay: 0.30s; }
         .anim-lp-bb8 { animation-delay: 0.32s; }
@@ -597,11 +587,74 @@ const LinksPanel: React.FC<LinksPanelProps> = ({ theme, setTheme }) => {
         .anim-lp-mid { animation-delay: 0.33s; }
         .anim-lp-cv  { animation-delay: 0.35s; }
         .anim-lp-map { animation-delay: 0.37s; }
+
+        /* ══════════════════════════════════════════════════════
+           MOBILE — LinksPanel internal adjustments
+           Same breakpoint as Landing so they stay in sync
+           ══════════════════════════════════════════════════════ */
+        @media (max-width: 480px) and (orientation: portrait),
+               (max-width: 430px) {
+
+          /*
+            On mobile, links-panel fills the .mobile-links flex slot.
+            Keep the same 3-row structure but scale down.
+            The rows shrink slightly — social row is the smallest,
+            commit gets the most room (it has the most content).
+          */
+          .lp-row-top {
+            flex: 22 22 0; /* social icons — compact strip */
+          }
+          .lp-row-mid {
+            flex: 42 42 0; /* commit strip — needs most room */
+          }
+          .lp-row-bot {
+            flex: 36 36 0; /* resume + map — generous but not huge */
+          }
+
+          /* Social icons: shrink font, keep them square */
+          .lp-social {
+            font-size: clamp(12px, 3.5vw, 17px);
+          }
+
+          /* BB8 toggle: scale down on mobile */
+          .lp-bb8 {
+            flex: 1.2;
+          }
+
+          /* Commit text: tighter sizing for narrow column */
+          .lp-eyebrow-label {
+            font-size: clamp(6px, 1.8vw, 9px);
+            /* Hide date on mobile — saves horizontal space */
+          }
+          .lp-eyebrow-date {
+            display: none; /* clean up clutter on narrow right column */
+          }
+          .lp-commit-repo {
+            font-size: clamp(7px, 2vw, 10px);
+          }
+          .lp-commit-msg {
+            font-size: clamp(7px, 1.9vw, 10px);
+            -webkit-line-clamp: 2;
+          }
+          .lp-commit {
+            padding: clamp(5px, 1.5vw, 10px) clamp(6px, 1.8vw, 12px);
+            gap: clamp(2px, 0.5vh, 4px);
+          }
+
+          /* Resume: tighter text */
+          .lp-resume {
+            font-size: clamp(7px, 2vw, 10px);
+            letter-spacing: 0.05em;
+          }
+          .lp-resume-sub {
+            font-size: clamp(5px, 1.5vw, 8px);
+          }
+        }
       `}</style>
 
       <div className="links-panel">
 
-        {/* TOP 30%: linkedin | github | bb8 | placeholder */}
+        {/* TOP: social icons */}
         <div className="lp-row-top">
           <a href="https://www.linkedin.com/in/pranjwal-s-01979b242/" className="lp-cell lp-social anim-lp-li" target="_blank" rel="noopener noreferrer">
             <LuLinkedin />
@@ -617,7 +670,7 @@ const LinksPanel: React.FC<LinksPanelProps> = ({ theme, setTheme }) => {
           </a>
         </div>
 
-        {/* MID 40%: commit strip */}
+        {/* MID: commit strip */}
         <a href={commit?.url ?? `https://github.com/${GITHUB_USER}`} className="lp-cell lp-commit lp-row-mid anim-lp-mid" target="_blank" rel="noopener noreferrer">
           {commitLoading ? (
             <div style={{ display: "flex", flexDirection: "column", gap: "clamp(3px,0.4vh,6px)", width: "100%" }}>
@@ -646,7 +699,7 @@ const LinksPanel: React.FC<LinksPanelProps> = ({ theme, setTheme }) => {
           )}
         </a>
 
-        {/* BOT 30%: resume | map */}
+        {/* BOT: resume + map */}
         <div className="lp-row-bot">
           <a href="/Pranjwal_Singh_CV_Fall2026.pdf" download className="lp-cell lp-resume anim-lp-cv">
             <span>Download CV</span>
