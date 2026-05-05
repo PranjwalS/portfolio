@@ -12,7 +12,7 @@ const projects: Array<{
 }> = [
   {
     name: "JobScout",
-    meta: "2024 – Present",
+    meta: "2025 – Present",
     sub: "AI job aggregator & application tracker",
     desc: "Scrapes, scores, and ranks co-op postings. Cover letter generation and full application tracking.",
     tags: ["FastAPI", "React", "Celery", "Redis", "GCP"],
@@ -22,10 +22,10 @@ const projects: Array<{
       timeframe: "2024 – Present",
       image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&auto=format&fit=crop",
       description:
-        "JobScout is a full-stack job aggregation platform built specifically for co-op hunting. It scrapes postings across multiple sources, scores and ranks them against your profile using an LLM, and tracks every application end-to-end. The companion Chrome extension (Apply AI) detects job application pages and autofills fields by parsing DOM context against your stored profile.",
+        "JobScout is a full-stack job aggregation platform built specifically for co-op hunting. It scrapes postings across multiple sources, scores and ranks them against your profile using an LLM, and tracks every application end-to-end. The companion Chrome extension (Apply AI) detects job application pages and autofills fields by parsing DOM context against your stored profile. Built a full-stack career platform where users maintain a \textbf{Career Twin} profile (experience, projects, skills, education) and create job search dashboards — each running a \textbf{cron}-scheduled scraper across major job boards, populating listings that are scored, ranked, and matched to the user's profile via \textbf{LLM}, with custom cover letters and tailored CVs generated per listing using \textbf{Celery} + \textbf{Redis} async pipelines and email alerts for high-scored matches. Developed a \textbf{Chrome extension} for static job form autofill, with an in-progress \textbf{LLM} + \textbf{Playwright} auto-application bot; application outcomes are tracked via email scanning or manual input, and when interviews are scheduled, the system assembles the CV, cover letter, job description, and an \textbf{LLM}-generated Q\&A sheet one hour prior alongside a mock interview simulation.",
       tags: ["FastAPI", "React", "TypeScript", "Celery", "Redis", "Supabase", "GCP", "Vercel", "Playwright", "Chrome Extension"],
       upcoming: [
-        "Career Twin integration — persistent career logbook and RAG-powered trajectory modeling",
+        "Career Twin integration, persistent career logbook and RAG-powered trajectory modeling",
         "Subscription model with Stripe billing",
         "LinkedIn scraper hardening against CSS class randomization",
         "Email digest for new high-score postings",
