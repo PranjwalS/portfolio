@@ -215,7 +215,7 @@ export const InnerPane: React.FC<InnerPaneProps> = ({ data, onClose, theme }) =>
                     {data.timeframe && (
                       <span style={{
                         fontFamily: "monospace",
-                        fontSize: "clamp(8px, 0.65vw, 10px)",
+                        fontSize: "clamp(9px, 0.85vw, 11px)",
                         color: muted,
                       }}>
                         {data.timeframe}
