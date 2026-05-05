@@ -343,7 +343,7 @@ const Landing: React.FC = () => {
           </div>
         </div>
 
-        <TechStackFooter />
+        <TechStackFooter theme={theme}/>
 
         <ProjectsPane   isOpen={isProjectsOpen}   onClose={() => setIsProjectsOpen(false)}   theme={theme} />
         <EducationPane  isOpen={isEducationOpen}   onClose={() => setIsEducationOpen(false)}  theme={theme} />
