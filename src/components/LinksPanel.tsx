@@ -325,7 +325,7 @@ const LeafletMap: React.FC<{ theme: "dark" | "light" }> = ({ theme }) => {
       if (!L || !mapRef.current || leafletRef.current) return;
 
       const map = L.map(mapRef.current, {
-        center: [45.5017, -73.5673],
+        center: [43.4643, -80.5204],
         zoom: 12,
         zoomControl: false,
         attributionControl: false,
@@ -354,10 +354,10 @@ const LeafletMap: React.FC<{ theme: "dark" | "light" }> = ({ theme }) => {
           '<line x1="17" y1="12" x2="22" y2="12" stroke="#3bff6e" stroke-width="1.5" stroke-linecap="round"/>' +
           '</svg>',
         iconSize: [16, 16],
-        iconAnchor: [8, 8],
+        iconAnchor: [8, -4],
       });
 
-      L.marker([45.5017, -73.5673], { icon: pinIcon }).addTo(map);
+      L.marker([43.4643, -80.5204], { icon: pinIcon }).addTo(map);
     };
 
     if ((window as any).L) {
@@ -705,9 +705,9 @@ const LinksPanel: React.FC<LinksPanelProps> = ({ theme, setTheme }) => {
             <span>Download CV</span>
             <span className="lp-resume-sub">PDF · Latest</span>
           </a>
-          <div className="lp-cell lp-map anim-lp-map">
+          <a href="https://maps.google.com/?q=University+of+Waterloo,+Waterloo,+ON" target="_blank" rel="noopener noreferrer" className="lp-cell lp-map anim-lp-map" style={{ cursor: "pointer" }}>
             <LeafletMap theme={theme} />
-          </div>
+          </a>
         </div>
 
       </div>
