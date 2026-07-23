@@ -16,28 +16,20 @@ const ExperiencePane: React.FC<ExperiencePaneProps> = ({ isOpen, onClose, theme 
     <PaneSectionTitle>Work</PaneSectionTitle>
 
     <PaneCard
-      name="Edbridges Inc. · Askly.Today"
-      meta="Jun - Aug 2026  ·  Remote"
-      sub="Software Engineer Intern"
-      desc="RAG pipelines, prompt engineering, and LLM backend systems using Python, MongoDB, Pinecone, LangChain, and OpenAI API."
-      tags={["Python", "RAG", "LangChain", "OpenAI API", "Pinecone", "MongoDB", "LLM"]}
+      name="Definity"
+      meta="Sept - Dec 2026  ·  Waterloo, CAN"
+      sub="Test Automation Developer"
+      desc="."
+      tags={["Python"]}
       inner={{
-        title: "Edbridges Inc. · Askly.Today",
-        subtitle: "Software Engineer Intern",
-        timeframe: "Jun - Aug 2026  ·  Remote",
-        image: "assets/edbridges.jpg",
+        title: "Definity",
+        subtitle: "Test Automation Developer",
+        timeframe: "Sept - Dec 2026  ·  Waterloo, CAN",
+        image: "-",
         description:
-          "Built and improved RAG pipelines and prompt engineering workflows on an AI-powered educational platform, using Python, MongoDB, and Pinecone Vector DB to enhance LLM output quality. Developed backend LLM workflow systems using LangChain and OpenAI API, and built internal tooling for QA testing and model evaluation.",
-        tags: ["Python", "RAG", "LangChain", "OpenAI API", "Pinecone", "MongoDB", "Prompt Engineering"],
+          "new job",
+        tags: ["Python"],
       }}
-    />
-
-    <PaneCard
-      name="Math Department · University of Waterloo"
-      meta="May - Aug 2026  ·  Waterloo, CAN"
-      sub="Math Course Grader"
-      desc="Grading undergraduate mathematics assignments and exams. ~6 hrs/week."
-      tags={["Mathematics", "Grading"]}
     />
 
 
