@@ -35,27 +35,6 @@ const projects: Array<{
     },
   },
   {
-    name: "EnOSym",
-    meta: "2026",
-    sub: "Agentic AI coding assistant",
-    desc: "Voice-driven coding assistant with RAG over your codebases, a sandboxed execution environment, and an autonomous background agent.",
-    tags: ["Python", "LangChain", "ChromaDB", "Whisper", "Playwright"],
-    inner: {
-      title: "EnOSym",
-      subtitle: "Agentic AI coding assistant",
-      timeframe: "2026",
-      image: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&auto=format&fit=crop",
-      description:
-        "EnOSym is a locally-run agentic coding assistant you talk to. It knows your codebases, generates and tests code autonomously, and pings you when it has suggestions.\n\nVoice input is handled by Whisper, with Coqui TTS for responses. Every conversation is transcribed and stored in SQLite, then embedded into ChromaDB alongside your code, so context from past sessions bleeds naturally into new ones. Code is chunked with tree-sitter for function and class-aware retrieval rather than arbitrary token splits for the RAG.\n\nA LangChain agentic loop orchestrates LLM tool calls across RAG file/code retrieval, an isolated coding sandbox, and a Playwright browser environment for testing. A background agent runs when idle; scanning your repos for improvements and delivering accept/reject suggestions via email, with approved code changes auto-generated.",
-      tags: ["Python", "LangChain", "ChromaDB", "Whisper", "Coqui TTS", "Playwright", "Groq API", "Ollama", "SQLite", "tree-sitter"],
-      upcoming: [
-        "Clean Desktop app for voice assistant and code output",
-        "Mobile/email push notifications for background agent suggestions",
-      ],
-      githubUrl: "https://github.com/Pranjwals/enosym",
-    },
-  },
-  {
     name: "Mute.",
     meta: "2025",
     sub: "Minimal Android OS launcher",
