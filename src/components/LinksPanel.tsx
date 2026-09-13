@@ -578,33 +578,47 @@ const LinksPanel: React.FC<LinksPanelProps> = ({ theme, setTheme }) => {
           white-space: nowrap;
           pointer-events: none;
         }
-          
+
         /* status box */
         .lp-status {
-          flex: 1.6;
+          flex: 1.8;
           flex-direction: column;
           align-items: flex-start;
           justify-content: center;
           padding: 0 clamp(6px, 0.7vw, 10px);
-          gap: clamp(1px, 0.2vh, 3px);
-          cursor: default;
+          gap: clamp(2px, 0.3vh, 5px);
+          cursor: pointer;
+          text-decoration: none;
+          color: var(--text);
         }
+        .lp-status:hover::before { display: none; }
+        .lp-status:hover { border-color: var(--hover-border) !important; }
         .lp-status-label {
-          font-size: clamp(6px, 0.52vw, 8px);
-          letter-spacing: 0.12em;
+          font-size: clamp(6px, 0.55vw, 11px);
+          letter-spacing: 0.05em;
           text-transform: uppercase;
           opacity: 0.28;
           font-weight: 600;
         }
         .lp-status-value {
-          font-size: clamp(7px, 0.65vw, 10px);
+          font-size: clamp(9px, 0.90vw, 15px);
           font-weight: 700;
-          letter-spacing: 0.04em;
+          letter-spacing: 0.05em;
           opacity: 0.75;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
           width: 100%;
+          text-align: center;
+        }
+        .lp-status-dot {
+          width: clamp(5px, 0.5vw, 7px); height: clamp(5px, 0.5vw, 7px);
+          border-radius: 50%; background: #e74c3c; flex-shrink: 0; position: relative;
+        }
+        .lp-status-dot::after {
+          content: ''; position: absolute; inset: -3px; border-radius: 50%;
+          background: rgba(231,76,60,0.3);
+          animation: pulse-ring 2s ease-out infinite;
         }
 
         /* animation stagger */
@@ -681,20 +695,24 @@ const LinksPanel: React.FC<LinksPanelProps> = ({ theme, setTheme }) => {
 
       <div className="links-panel">
 
-        {/* TOP: status + social icons */}
-        <div className="lp-row-top">
-          <div className="lp-cell lp-status anim-lp-li">
-            <span className="lp-status-label">Status</span>
-            <span className="lp-status-value">Co-op @ Definity</span> 
+      {/* TOP: status + social icons */}
+      <div className="lp-row-top">
             {/* for status, it can be either; status: co-op @ company-name OR status: study # 2A (term basically) for future ref*/}
-          </div>
-          <a href={`https://github.com/${GITHUB_USER}`} className="lp-cell lp-social anim-lp-gh" target="_blank" rel="noopener noreferrer">
-            <LuGithub />
-          </a>
-          <div className="lp-cell lp-bb8 anim-lp-bb8">
-            <BB8Toggle theme={theme} setTheme={setTheme} />
-          </div>
+            <a href="https://www.definity.com" target="_blank" rel="noopener noreferrer" className="lp-cell lp-status anim-lp-li">
+              <div style={{ display: "flex", alignItems: "center", gap: "clamp(4px, 0.45vw, 6px)", width: "100%" }}>
+                <span className="lp-status-dot" />
+                <span className="lp-status-label">Status · Co-op AT:</span>
+              </div>
+              <span className="lp-status-value">Definity</span>
+            </a>
+        <a href={`https://github.com/${GITHUB_USER}`} className="lp-cell lp-social anim-lp-gh" target="_blank" rel="noopener noreferrer">
+          <LuGithub />
+        </a>
+        <div className="lp-cell lp-bb8 anim-lp-bb8">
+          <BB8Toggle theme={theme} setTheme={setTheme} />
         </div>
+      </div>          
+
 
         {/* MID: commit strip */}
         <a href={commit?.url ?? `https://github.com/${GITHUB_USER}`} className="lp-cell lp-commit lp-row-mid anim-lp-mid" target="_blank" rel="noopener noreferrer">
