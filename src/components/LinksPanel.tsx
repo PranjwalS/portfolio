@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useEffect, useId } from "react";
-import { LuLinkedin, LuGithub, LuInstagram } from "react-icons/lu";
+import { LuGithub } from "react-icons/lu";
 
 interface LinksPanelProps {
   theme: "dark" | "light";
@@ -578,6 +578,34 @@ const LinksPanel: React.FC<LinksPanelProps> = ({ theme, setTheme }) => {
           white-space: nowrap;
           pointer-events: none;
         }
+          
+        /* status box */
+        .lp-status {
+          flex: 1.6;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: center;
+          padding: 0 clamp(6px, 0.7vw, 10px);
+          gap: clamp(1px, 0.2vh, 3px);
+          cursor: default;
+        }
+        .lp-status-label {
+          font-size: clamp(6px, 0.52vw, 8px);
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          opacity: 0.28;
+          font-weight: 600;
+        }
+        .lp-status-value {
+          font-size: clamp(7px, 0.65vw, 10px);
+          font-weight: 700;
+          letter-spacing: 0.04em;
+          opacity: 0.75;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          width: 100%;
+        }
 
         /* animation stagger */
         .anim-lp-li  { animation-delay: 0.28s; }
@@ -640,7 +668,6 @@ const LinksPanel: React.FC<LinksPanelProps> = ({ theme, setTheme }) => {
             padding: clamp(5px, 1.5vw, 10px) clamp(6px, 1.8vw, 12px);
             gap: clamp(2px, 0.5vh, 4px);
           }
-
           /* Resume: tighter text */
           .lp-resume {
             font-size: clamp(7px, 2vw, 10px);
@@ -654,20 +681,19 @@ const LinksPanel: React.FC<LinksPanelProps> = ({ theme, setTheme }) => {
 
       <div className="links-panel">
 
-        {/* TOP: social icons */}
+        {/* TOP: status + social icons */}
         <div className="lp-row-top">
-          <a href="https://www.linkedin.com/in/pranjwal-s-01979b242/" className="lp-cell lp-social anim-lp-li" target="_blank" rel="noopener noreferrer">
-            <LuLinkedin />
-          </a>
+          <div className="lp-cell lp-status anim-lp-li">
+            <span className="lp-status-label">Status</span>
+            <span className="lp-status-value">Co-op @ Definity</span> 
+            {/* for status, it can be either; status: co-op @ company-name OR status: study # 2A (term basically) for future ref*/}
+          </div>
           <a href={`https://github.com/${GITHUB_USER}`} className="lp-cell lp-social anim-lp-gh" target="_blank" rel="noopener noreferrer">
             <LuGithub />
           </a>
           <div className="lp-cell lp-bb8 anim-lp-bb8">
             <BB8Toggle theme={theme} setTheme={setTheme} />
           </div>
-          <a href="https://instagram.com/" className="lp-cell lp-social anim-lp-ph" target="_blank" rel="noopener noreferrer">
-            <LuInstagram />
-          </a>
         </div>
 
         {/* MID: commit strip */}
