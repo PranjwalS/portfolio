@@ -25,8 +25,47 @@ const EducationPane: React.FC<EducationPaneProps> = ({ isOpen, onClose, theme })
         subtitle: "Computer Science Honours · Hardware Specialization",
         timeframe: "2025 – 2029  ·  Waterloo, CAN",
         image: "/assets/dc.avif",
-        description:
-          "Honours Bachelor of Computer Science with a Digital Hardware specialization. Co-operative education program; alternating academic and work terms. Targeting Fall 2026 co-op. Courses completed span algorithms and data structures, combinatorics and graph theory, logic and computability, statistics, linear algebra, and hardware design.",
+        content: [
+          {
+            type: "paragraph",
+            text: "Honours Bachelor of Computer Science with a Digital Hardware specialization. Co-operative education program — alternating academic and work terms across 5 years.",
+          },
+          {
+            type: "heading",
+            text: "Courses",
+          },
+          {
+            type: "bullets",
+            items: [
+              "CS 135, 136 — Functional and imperative programming foundations",
+              "CS 241 — Compilers, assembly, and sequential programs",
+              "CS 245 — Logic and computability",
+              "CS 246 — OOP in C++, design patterns",
+              "MTE 120 — Circuits and hardware design",
+              "MATH 135, 136, 137, 138 — Algebra, linear algebra, calculus I & II",
+              "MATH 239 — Combinatorics and graph theory",
+              "STAT 230, 231 — Probability and statistics",
+            ],
+          },
+          // ── IMAGE EXAMPLE ───────────────────────────────────────────────────
+          // Drop an image anywhere in the content array — it renders inline,
+          // exactly where you place it. src, alt, and caption are all you need.
+          {
+            type: "image",
+            src: "/assets/definitylogo.png",
+            alt: "Davis Centre, University of Waterloo",
+            caption: "Davis Centre — home of the CS department",
+          },
+          // ────────────────────────────────────────────────────────────────────
+          {
+            type: "heading",
+            text: "Co-op",
+          },
+          {
+            type: "paragraph",
+            text: "Currently on Fall 2026 co-op at Definity as a Test Automation Developer. The program alternates work and study terms — five co-op placements over the degree.",
+          },
+        ],
         tags: [
           "MATH 135", "MATH 136", "MATH 137", "MATH 138", "MATH 239",
           "STAT 230", "STAT 231",
@@ -53,8 +92,12 @@ const EducationPane: React.FC<EducationPaneProps> = ({ isOpen, onClose, theme })
         subtitle: "DEC — Computer Science & Mathematics",
         timeframe: "2024 – 2025  ·  Montreal, CAN",
         image: "/assets/dawson.jpg",
-        description:
-          "Completed one year of the DEC (Diplôme d'études collégiales) program in Computer Science and Mathematics at Dawson College, Montreal. Left with a 95 average before transferring to the University of Waterloo.",
+        content: [
+          {
+            type: "paragraph",
+            text: "Completed one year of the DEC (Diplôme d'études collégiales) program in Computer Science and Mathematics at Dawson College, Montreal. Left with a 95 average before transferring to the University of Waterloo.",
+          },
+        ],
         tags: ["Python", "OOP", "Discrete Maths", "Cal I", "Cal II", "Mechanics"],
       }}
     />
@@ -71,8 +114,12 @@ const EducationPane: React.FC<EducationPaneProps> = ({ isOpen, onClose, theme })
         subtitle: "International Baccalaureate Program",
         timeframe: "2019 – 2024  ·  Montreal, CAN",
         image: "/assets/esds.jpg",
-        description:
-          "Completed the full International Baccalaureate program over 5 years at École Secondaire des Sources in Montreal, Canada. Graduated with a 96 average.",
+        content: [
+          {
+            type: "paragraph",
+            text: "Completed the full International Baccalaureate program over 5 years at École Secondaire des Sources in Montreal, Canada. Graduated with a 96 average.",
+          },
+        ],
         tags: ["IB", "Mathematics", "Chemistry", "Physics", "English", "French", "History"],
       }}
     />

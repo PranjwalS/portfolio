@@ -21,8 +21,36 @@ const projects: Array<{
       subtitle: "AI job aggregator, tracker & career platform",
       timeframe: "2025 – Present",
       image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&auto=format&fit=crop",
-      description:
-        "JobScout is a full-stack career platform built around the idea that job hunting should be automated. Users maintain a Career Twin profile: experience, projects, skills, education, and spin up job search dashboards, each running a cron-scheduled scraper across major job boards.\n\nEvery listing gets scored and matched against your profile via LLM. Custom cover letters and tailored CVs are generated per listing through Celery + Redis async pipelines, with email alerts for high-ranked matches.\n\nA Chrome extension handles static form autofill across job application pages. An LLM + Playwright auto-application bot is in progress. Applied jobs are tracked via email scanning or manual input, and when an interview gets scheduled, the system assembles your CV, cover letter, job description, and an LLM-generated Q&A sheet one hour before, alongside a mock interview simulation.",
+      content: [
+        {
+          type: "paragraph",
+          text: "JobScout is a full-stack career platform built around the idea that job hunting should be automated. Users maintain a Career Twin profile — experience, projects, skills, education — and spin up job search dashboards, each running a cron-scheduled scraper across major job boards.",
+        },
+        {
+          type: "heading",
+          text: "Matching & Generation",
+        },
+        {
+          type: "paragraph",
+          text: "Every listing gets scored and matched against your profile via LLM. Custom cover letters and tailored CVs are generated per listing through Celery + Redis async pipelines, with email alerts for high-ranked matches.",
+        },
+        {
+          type: "heading",
+          text: "Application Layer",
+        },
+        {
+          type: "paragraph",
+          text: "A Chrome extension handles static form autofill across job application pages. Applied jobs are tracked via email scanning or manual input. When an interview gets scheduled, the system assembles your CV, cover letter, job description, and an LLM-generated Q&A sheet one hour before — alongside a mock interview simulation.",
+        },
+        {
+          type: "subheading",
+          text: "AutoApply bot in progress",
+        },
+        {
+          type: "paragraph",
+          text: "An LLM + Playwright auto-application bot is currently being built to handle dynamic form pages end-to-end without manual input.",
+        },
+      ],
       tags: ["FastAPI", "React", "TypeScript", "Celery", "Redis", "Supabase", "GCP", "Playwright", "Groq API", "Chrome Extension API"],
       upcoming: [
         "Career Twin public profile layer with verified GitHub and deployed project links",
@@ -44,8 +72,54 @@ const projects: Array<{
       subtitle: "Schedule-based campus social & dating app",
       timeframe: "2026 – Present",
       image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&auto=format&fit=crop",
-      description:
-        "Campus is the social layer UW never built. Students log in with their UW account — no bots, real people — plug in their full schedule, and the app surfaces others with meaningful overlap: same courses, clubs, gym slots, or free blocks.\n\nFriend mode and date mode coexist on the same social graph. Matching is rule-based and math-driven: mutual-match ELO weighted by reciprocal like rate and conversation quality, proximity memory tracking shared campus spaces, and a weekly rose mechanic for genuine signal. A mandatory audio snippet filters ego-browsers.\n\nThe gambling layer adds stakes without real money — spin-to-win roses, prediction markets on social outcomes, streak wagers, and mystery box rewards for completing date quests. A BeReal-style date quest posts to a public campus feed when two people meet up live on campus.",
+      content: [
+        {
+          type: "paragraph",
+          text: "Campus is the social layer UW never built. Students log in with their UW account — no bots, real people — plug in their full schedule, and the app surfaces others with meaningful overlap: same courses, clubs, gym slots, or free blocks.",
+        },
+        {
+          type: "heading",
+          text: "How Matching Works",
+        },
+        {
+          type: "paragraph",
+          text: "Friend mode and date mode coexist on the same social graph. Matching is rule-based and math-driven — no LLMs anywhere in the product.",
+        },
+        {
+          type: "bullets",
+          items: [
+            "Mutual-match ELO weighted by reciprocal like rate and conversation quality",
+            "Proximity memory tracking shared campus spaces (DC, SLC, DP) — happn-style, campus-tuned",
+            "Weekly rose mechanic: 1 per week, spin-to-win, artificial scarcity = genuine signal",
+            "Mandatory audio snippet with an odd prompt — filters ego-browsers, surfaces personality",
+          ],
+        },
+        {
+          type: "heading",
+          text: "Date Mode",
+        },
+        {
+          type: "paragraph",
+          text: "A BeReal-style date quest triggers when two matched people are live on campus at the same time. Quest photo posts to a public campus feed — no captions, no comments, just tags and likes. The scrapbook on your profile keeps a private memory of every date quest.",
+        },
+        {
+          type: "heading",
+          text: "The Game Layer",
+        },
+        {
+          type: "paragraph",
+          text: "Stakes without real money. The gambling mechanics add social tension and retention without monetizing directly.",
+        },
+        {
+          type: "bullets",
+          items: [
+            "Prediction markets — bet in-app currency on social outcomes (will this match go on a date quest this week?)",
+            "Streak wagers — bet currency your talking streak lasts X days",
+            "Mystery box reward for completing date quests",
+            "Hot-or-not campus poll where you stake points on whether a profile hits a likes threshold",
+          ],
+        },
+      ],
       tags: ["Expo", "React Native", "Supabase", "Vercel", "PostGIS"],
       upcoming: [
         "UW SSO login integration",
@@ -66,8 +140,46 @@ const projects: Array<{
       subtitle: "Curated Hindu religious gift boxes for the diaspora",
       timeframe: "2026 – Present",
       image: "https://images.unsplash.com/photo-1604595677054-43b8c23a8a9f?w=800&auto=format&fit=crop",
-      description:
-        "Puja Hampers fills the gap between cheap Amazon listings and overpriced US competitors — curated Hindu religious gift boxes built for second-gen South Asians in Canada who want a thoughtful cultural gift without the assembly friction.\n\nOne box per festival. Each box tells a story: what the occasion is, why these items, brief cultural context on the card. Everything inside should be displayable and keepable — not a puja kit, a gift. Hero piece is an aesthetic mid-range murti that fits a modern apartment.\n\nSeasonal SKU model keeps focus tight: Diwali launches first, then New Year's, Holi, Raksha Bandhan. Sourced wholesale via IndiaMart and local Brampton/Mississauga suppliers. Occasion cards are language-specific — Hindi, Gujarati, Tamil, Punjabi over time.",
+      content: [
+        {
+          type: "paragraph",
+          text: "Puja Hampers fills the gap between cheap Amazon listings and overpriced US competitors — curated Hindu religious gift boxes built for second-gen South Asians in Canada who want a thoughtful cultural gift without the assembly friction.",
+        },
+        {
+          type: "heading",
+          text: "What's in the Box",
+        },
+        {
+          type: "paragraph",
+          text: "Not a puja kit — a gift. Everything inside should be displayable and keepable. The hero piece is an aesthetic mid-range murti that fits a modern apartment: not cheap plastic, not temple-grade expensive.",
+        },
+        {
+          type: "bullets",
+          items: [
+            "Murti (occasion-specific) — the statement piece",
+            "One figurine — brass OR terracotta, not both",
+            "Festival-specific item (diya for Diwali, gulaal for Holi, etc.)",
+            "Occasion card (language-specific) — storytelling is core",
+            "Premium reusable outer box + gift wrapping",
+          ],
+        },
+        {
+          type: "heading",
+          text: "The Model",
+        },
+        {
+          type: "paragraph",
+          text: "One box per festival. Seasonal SKU model keeps focus tight: Diwali launches first, then New Year's, Holi, Raksha Bandhan. Sourced wholesale via IndiaMart and local Brampton/Mississauga suppliers. Occasion cards are language-specific — Hindi, Gujarati, Tamil, Punjabi over time.",
+        },
+        {
+          type: "subheading",
+          text: "Target: ~$60–70 sale price on ~$40–45 COGS",
+        },
+        {
+          type: "paragraph",
+          text: "Starting with tighter margins to build demand, then adjusting as the seasonal rhythm proves out. Customizable base box with optional add-ons at checkout.",
+        },
+      ],
       tags: ["E-commerce", "Consumer", "Shopify", "D2C"],
       upcoming: [
         "Diwali box launch",
@@ -88,12 +200,41 @@ const projects: Array<{
       subtitle: "Minimal Android OS launcher",
       timeframe: "2025",
       image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&auto=format&fit=crop",
-      description:
-        "Mute replaces your Android home screen entirely. The goal is simple, strip the phone down to what you actually use, and make the rest harder to reach.\n\nIt presents only your pinned apps in a clean, minimal interface. Built-in blocking sits on top: apps and websites can be restricted via SYSTEM_ALERT_WINDOW overlays, with keyword and schedule-based rules enforced through AccessibilityService.\n\nA small FastAPI backend on Render handles configuration backups and usage stats.",
+      content: [
+        {
+          type: "paragraph",
+          text: "Mute replaces your Android home screen entirely. The goal is simple: strip the phone down to what you actually use, and make the rest harder to reach.",
+        },
+        {
+          type: "heading",
+          text: "How It Works",
+        },
+        {
+          type: "paragraph",
+          text: "It presents only your pinned apps in a clean, minimal interface. Built-in blocking sits on top — apps and websites can be restricted via SYSTEM_ALERT_WINDOW overlays, with keyword and schedule-based rules enforced through AccessibilityService.",
+        },
+        {
+          type: "bullets",
+          items: [
+            "Full home screen replacement — launcher takes over on boot",
+            "App blocking via SYSTEM_ALERT_WINDOW overlays",
+            "Website blocking with keyword and schedule-based rules",
+            "AccessibilityService enforcement for persistent restriction",
+          ],
+        },
+        {
+          type: "heading",
+          text: "Backend",
+        },
+        {
+          type: "paragraph",
+          text: "A small FastAPI backend on Render handles configuration backups and usage stats — keeping the on-device install lean.",
+        },
+      ],
       tags: ["Kotlin", "Jetpack Compose", "AccessibilityService", "SYSTEM_ALERT_WINDOW", "FastAPI", "PostgreSQL", "Render"],
       upcoming: [
         "Launching on Google Play Store",
-        "Health Connect integration, physical state unlocks digital permissions",
+        "Health Connect integration — physical state unlocks digital permissions",
         "Accountability pacts between two users with shared bypass logs",
       ],
       githubUrl: "https://github.com/Pranjwals/mute.",
@@ -101,17 +242,43 @@ const projects: Array<{
   },
   {
     name: "POS Ecosystem",
-    meta: "2025 - Present",
+    meta: "2025 – Present",
     sub: "Multi-business point-of-sale platform",
     desc: "Merchant checkout, inventory, transaction logs, and a revenue dashboard. Multi-tenant by design.",
     tags: ["FastAPI", "React", "PostgreSQL"],
     inner: {
       title: "POS Ecosystem",
       subtitle: "Multi-business point-of-sale platform",
-      timeframe: "2025 - Present",
+      timeframe: "2025 – Present",
       image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&auto=format&fit=crop",
-      description:
-        "A multi-tenant POS platform where one account manages multiple businesses. Built with a FastAPI backend, React frontend, and PostgreSQL via SQLAlchemy.\n\nFeatures merchant checkout, inventory management with real-time stock tracking, transaction logs, and a revenue dashboard with chart visualizations. Slug-based routing per business keeps everything cleanly separated.",
+      content: [
+        {
+          type: "paragraph",
+          text: "A multi-tenant POS platform where one account manages multiple businesses. Built with a FastAPI backend, React frontend, and PostgreSQL via SQLAlchemy.",
+        },
+        {
+          type: "heading",
+          text: "Features",
+        },
+        {
+          type: "bullets",
+          items: [
+            "Merchant checkout flow",
+            "Inventory management with real-time stock tracking",
+            "Transaction logs with full history",
+            "Revenue dashboard with chart visualizations",
+            "Slug-based routing per business — cleanly separated tenants",
+          ],
+        },
+        {
+          type: "heading",
+          text: "Architecture",
+        },
+        {
+          type: "paragraph",
+          text: "Slug-based routing keeps each business's data and UI cleanly separated within a single account. JWT auth handles multi-tenant access control across the stack.",
+        },
+      ],
       tags: ["FastAPI", "React", "PostgreSQL", "SQLAlchemy", "Pydantic", "JWT"],
       upcoming: [
         "Stripe payment integration",
@@ -122,6 +289,7 @@ const projects: Array<{
     },
   },
 ];
+
 interface ProjectsPaneProps {
   isOpen: boolean;
   onClose: () => void;
@@ -146,3 +314,4 @@ const ProjectsPane: React.FC<ProjectsPaneProps> = ({ isOpen, onClose, theme }) =
 );
 
 export default ProjectsPane;
+

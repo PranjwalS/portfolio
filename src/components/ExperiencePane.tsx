@@ -26,12 +26,34 @@ const ExperiencePane: React.FC<ExperiencePaneProps> = ({ isOpen, onClose, theme 
         subtitle: "Test Automation Developer",
         timeframe: "Sept - Dec 2026  ·  Waterloo, CAN",
         image: "assets/definity.jpg",
-        description:
-          "Migrated the test suite from Selenium to Playwright, modernizing the automation framework across Definity's consumer-facing insurance platforms. Built a visual regression testing tool from scratch that pulls design data from the Figma API and renders live frontend pages via Playwright, and then runs pixel-level diffing to catch UI/UX discrepancies before they reach production. Integrated an LLM API to furthermore intelligently interpret visual differences and generate human-readable reports if significant pixel diff. Tool handles automated multi-step navigation, structured input interfaces, and outputs results to dashboards with full logging for historical tracking.",
+        content: [
+          {
+            type: "paragraph",
+            text: "Migrated the test suite from Selenium to Playwright, modernizing the automation framework across Definity's consumer-facing insurance platforms.",
+          },
+          {
+            type: "heading",
+            text: "Visual Regression Tool",
+          },
+          {
+            type: "paragraph",
+            text: "Built a visual regression testing tool from scratch that pulls design data from the Figma API and renders live frontend pages via Playwright, then runs pixel-level diffing to catch UI/UX discrepancies before they reach production.",
+          },
+          {
+            type: "bullets",
+            items: [
+              "Figma API integration to pull design specs per component",
+              "Playwright renders live pages for side-by-side comparison",
+              "Pixel-level diffing to surface visual regressions automatically",
+              "LLM API interprets diffs and generates human-readable reports for significant deltas",
+              "Automated multi-step navigation and structured input handling",
+              "Results output to dashboards with full historical logging",
+            ],
+          },
+        ],
         tags: ["Python", "Playwright", "Figma API", "LLM", "Selenium", "BrowserStack"],
       }}
     />
-
 
     <PaneCard
       name="Cadets (CJCR), Dept. of National Defence"
@@ -44,8 +66,32 @@ const ExperiencePane: React.FC<ExperiencePaneProps> = ({ isOpen, onClose, theme 
         subtitle: "Software Developer Intern",
         timeframe: "Jun - Aug 2025  ·  St-Jean, CAN",
         image: "assets/cadets.jpg",
-        description:
-          "Full-stack development on internal tools used by 10,000+ program staff nationwide. Built pages, UI components, and dynamic dashboards on a Vue.js frontend. Extended the .NET backend with new data entities, SignalR Hubs, and RESTful APIs for asset tracking and reporting. Also built Power Apps solutions integrating Dataverse and SQL for reporting dashboards and cadet asset management.",
+        content: [
+          {
+            type: "paragraph",
+            text: "Full-stack development on internal tools used by 10,000+ program staff nationwide.",
+          },
+          {
+            type: "heading",
+            text: "Frontend",
+          },
+          {
+            type: "paragraph",
+            text: "Built pages, UI components, and dynamic dashboards on a Vue.js frontend.",
+          },
+          {
+            type: "heading",
+            text: "Backend",
+          },
+          {
+            type: "bullets",
+            items: [
+              "Extended the .NET backend with new data entities and RESTful APIs",
+              "Built SignalR Hubs for real-time asset tracking and reporting",
+              "Power Apps solutions integrating Dataverse and SQL for cadet asset management",
+            ],
+          },
+        ],
         tags: ["Vue.js", ".NET", "SignalR", "Power Platform", "SQL"],
       }}
     />
@@ -61,8 +107,20 @@ const ExperiencePane: React.FC<ExperiencePaneProps> = ({ isOpen, onClose, theme 
         subtitle: "Digital Transformation Intern",
         timeframe: "Jun - Aug 2024  ·  Ottawa, CAN",
         image: "/assets/ericsson.jpeg",
-        description:
-          "Monitored and debugged software pipelines using Jenkins and Kubernetes, diagnosing build and deployment failures by inspecting pod status and reviewing logs. Maintained Grafana dashboards tracking KPIs and performance metrics across telecom infrastructure. Supported software testing workflows and contributed to operational reporting.",
+        content: [
+          {
+            type: "paragraph",
+            text: "Monitored and debugged software pipelines using Jenkins and Kubernetes, diagnosing build and deployment failures by inspecting pod status and reviewing logs.",
+          },
+          {
+            type: "bullets",
+            items: [
+              "Pipeline monitoring and failure diagnosis across Jenkins and Kubernetes",
+              "Grafana dashboards tracking KPIs and performance metrics across telecom infrastructure",
+              "Software testing workflows and operational reporting",
+            ],
+          },
+        ],
         tags: ["Kubernetes", "Jenkins", "Grafana", "Linux"],
       }}
     />
