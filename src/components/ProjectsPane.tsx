@@ -31,7 +31,50 @@ const projects: Array<{
         "Recruiter-facing marketplace and subscription model",
       ],
       githubUrl: "https://github.com/PranjwalS/coverletter-generator-api",
-      // liveUrl: "https://jobscout.vercel.app",
+    },
+  },
+  {
+    name: "Campus",
+    meta: "2026 – Present",
+    sub: "Schedule-based campus social & dating app",
+    desc: "UW-first social layer built on real schedules. Surfaces people in your orbit — same courses, clubs, free blocks — with friend and date mode on the same graph. No LLMs, all math.",
+    tags: ["Expo", "Supabase", "Vercel"],
+    inner: {
+      title: "Campus",
+      subtitle: "Schedule-based campus social & dating app",
+      timeframe: "2026 – Present",
+      image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&auto=format&fit=crop",
+      description:
+        "Campus is the social layer UW never built. Students log in with their UW account — no bots, real people — plug in their full schedule, and the app surfaces others with meaningful overlap: same courses, clubs, gym slots, or free blocks.\n\nFriend mode and date mode coexist on the same social graph. Matching is rule-based and math-driven: mutual-match ELO weighted by reciprocal like rate and conversation quality, proximity memory tracking shared campus spaces, and a weekly rose mechanic for genuine signal. A mandatory audio snippet filters ego-browsers.\n\nThe gambling layer adds stakes without real money — spin-to-win roses, prediction markets on social outcomes, streak wagers, and mystery box rewards for completing date quests. A BeReal-style date quest posts to a public campus feed when two people meet up live on campus.",
+      tags: ["Expo", "React Native", "Supabase", "Vercel", "PostGIS"],
+      upcoming: [
+        "UW SSO login integration",
+        "Schedule import from Quest",
+        "Prediction market engine",
+        "Expand to other Canadian campuses",
+      ],
+    },
+  },
+  {
+    name: "Puja Hampers",
+    meta: "2026 – Present",
+    sub: "Curated Hindu religious gift boxes for the diaspora",
+    desc: "Occasion-based puja gift kits for South Asian Canadians. Seasonal SKU model, storytelling-first packaging, sourced and shipped from Canada.",
+    tags: ["E-commerce", "Shopify", "Consumer"],
+    inner: {
+      title: "Puja Hampers",
+      subtitle: "Curated Hindu religious gift boxes for the diaspora",
+      timeframe: "2026 – Present",
+      image: "https://images.unsplash.com/photo-1604595677054-43b8c23a8a9f?w=800&auto=format&fit=crop",
+      description:
+        "Puja Hampers fills the gap between cheap Amazon listings and overpriced US competitors — curated Hindu religious gift boxes built for second-gen South Asians in Canada who want a thoughtful cultural gift without the assembly friction.\n\nOne box per festival. Each box tells a story: what the occasion is, why these items, brief cultural context on the card. Everything inside should be displayable and keepable — not a puja kit, a gift. Hero piece is an aesthetic mid-range murti that fits a modern apartment.\n\nSeasonal SKU model keeps focus tight: Diwali launches first, then New Year's, Holi, Raksha Bandhan. Sourced wholesale via IndiaMart and local Brampton/Mississauga suppliers. Occasion cards are language-specific — Hindi, Gujarati, Tamil, Punjabi over time.",
+      tags: ["E-commerce", "Consumer", "Shopify", "D2C"],
+      upcoming: [
+        "Diwali box launch",
+        "Storefront live with seasonal SKU rotation",
+        "Language-specific occasion cards",
+        "Decorative coaster add-on line",
+      ],
     },
   },
   {
@@ -79,7 +122,6 @@ const projects: Array<{
     },
   },
 ];
-
 interface ProjectsPaneProps {
   isOpen: boolean;
   onClose: () => void;
