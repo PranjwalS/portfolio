@@ -17,7 +17,7 @@ const EducationPane: React.FC<EducationPaneProps> = ({ isOpen, onClose, theme })
     <PaneCard
       name="University of Waterloo"
       meta="2025 – 2029  ·  Waterloo, CAN"
-      sub="Computer Science Honours · Hardware Specialization"
+      sub="Computer Science Honours · Avg. 85"
       desc="Bachelor of Computer Science; a co-op program, targeting Fall 2026 internships. Courses span mathematics, statistics, programming, systems, and hardware design."
       tags={["CS 241", "CS 245", "CS 246", "MATH 239", "STAT 231", "MTE 120"]}
       inner={{
